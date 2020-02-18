@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cisco aci on Christopher Hannan</title>
+    <link>https://cphannan.github.io/categories/cisco-aci/</link>
+    <description>Recent content in cisco aci on Christopher Hannan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 13 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://cphannan.github.io/categories/cisco-aci/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cisco ACI Basic Commands</title>
+      <link>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</guid>
+      <description>General Overview acidiag fnvread Displays the address and state of switch nodes registered with the fabric.
+Moquery Usage moquery --help usage: Command line cousin to visore [-h] [-i HOST] [-p PORT] [-d DN] [-c KLASS] [-f FILTER] [-a ATTRS] [-o OUTPUT] [-u USER] [-x [OPTIONS [OPTIONS ...]]] optional arguments: -h, --help show this help message and exit -i HOST, --host HOST Hostname or ip of apic -p PORT, --port PORT REST server port -d DN, --dn DN dn of the mo -c KLASS, --klass KLASS comma seperated class names to query -f FILTER, --filter FILTER property filter to accept/reject mos -a ATTRS, --attrs ATTRS type of attributes to display (config, all) -o OUTPUT, --output OUTPUT Display format (block, table, xml, json) -u USER, --user USER User name -x [OPTIONS [OPTIONS .</description>
+    </item>
+    
+  </channel>
+</rss>
