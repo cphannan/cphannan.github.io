@@ -5,15 +5,91 @@
         <description>Recent content in Posts on Christopher Hannan</description>
         <generator>Hugo -- gohugo.io</generator>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 13 Feb 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://cphannan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Cisco ACI Basic Commands</title>
-            <link>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</link>
+            <title>ACI - Converting NX-OS to ACI Boot Mode</title>
+            <link>https://cphannan.github.io/posts/2020/02/aci-converting-nx-os-to-aci-boot-mode/</link>
+            <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://cphannan.github.io/posts/2020/02/aci-converting-nx-os-to-aci-boot-mode/</guid>
+            <description>Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
+switch# show version 2.</description>
+            <content type="html"><![CDATA[<h1 id="converting-to-aci-boot-mode">Converting to ACI Boot Mode</h1>
+<p>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.</p>
+<h2 id="1-verify-which-mode-the-switch-is-running-aci-or-nx-os">1. Verify which mode the switch is running (ACI or NX-OS)</h2>
+<p>Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:</p>
+<pre><code>switch# show version
+</code></pre><h2 id="2-uploading-the-aci-image">2. Uploading the ACI image</h2>
+<p>The ACI image can be copied to the switch via SCP from the APIC, an SCP server or directly via USB.</p>
+<h3 id="method-1-using-scp-from-the-apic">Method 1: Using SCP from the APIC</h3>
+<h4 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC</h4>
+<p>From the <strong>APIC CLI</strong>, view the ACI Out-of-band information and find a spare IP in the management network to use on the new switch:</p>
+<pre><code>apic1# show oob-mgmt
+</code></pre><p>Set the IP address on the mgmt0 interface of the new switch to allow connectivity between this interface and the APIC:</p>
+<p><strong>Example:</strong></p>
+<pre><code>switch(config)# interface mgmt0
+
+switch(config-if)# ip address &lt;ip-address/length&gt;
+</code></pre><p>Patch the new switch into a spare port on the OOB management switch in the management VLAN. Confirm connectivity from the new switch to the APIC:</p>
+<pre><code>switch# ping &lt;apic-ip-address&gt;
+</code></pre><h4 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch</h4>
+<p>Enable SCP services on the switch:</p>
+<pre><code>switch(config)# feature scp-server
+</code></pre><p>From the <strong>APIC CLI</strong>, view and take note of the currently installed leaf/spine switch firmware versions:</p>
+<pre><code>apic1# show versions
+</code></pre><p>View the firmware images present in the APIC repository and find the &ldquo;aci&rdquo; version of the above switch firmware. Take note of the MD5 checksum:</p>
+<pre><code>apic1# show firmware repository detail
+</code></pre><p>Use <strong>SCP</strong> to copy the firmware image from the APIC repository to the active supervisor module on the switch:</p>
+<pre><code>apic1# scp -r /firmware/fwrepos/fwrepo/&lt;aci-image.bin&gt; admin@&lt;switch-ip-address&gt;:&lt;aci-image.bin&gt;
+</code></pre><h3 id="method-2-using-usb">Method 2: Using USB</h3>
+<h4 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash</h4>
+<pre><code>switch# dir usb1:
+switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
+</code></pre><hr>
+<blockquote>
+<p><strong><em>Note:</em></strong> For dual-supervisor systems, copy the ACI image from the active to the standby supervisor module.
+<strong>Example:</strong> <code>switch(config)# copy bootflash:&lt;aci-image.bin&gt; bootflash://sup-standby/</code></p>
+</blockquote>
+<hr>
+<h2 id="3-boot-the-switch-to-the-aci-image">3. Boot the switch to the ACI image</h2>
+<p>Configure the switch to not boot from Cisco NX-OS:</p>
+<pre><code>switch(config)# no boot nxos
+</code></pre><p>Save the configuration:</p>
+<pre><code>switch(config)# copy running-config startup-config
+</code></pre><blockquote>
+<p><strong><em>Note:</em></strong> You must run the copy running-config startup-config command prior to booting the ACI image. Do not run it after you enter the boot aci command.</p>
+</blockquote>
+<p>Boot the switch with the ACI image:</p>
+<pre><code>switch(config)# boot aci bootflash:&lt;aci-image.bin&gt;
+</code></pre><blockquote>
+<p><strong><em>Caution:</em></strong> Do not enter the copy running-config startup-config command after the boot aci command. If you do, the switch will go to the loader&gt; prompt.</p>
+</blockquote>
+<p>Verify the integrity of the file by displaying the MD5 checksum and comparing it to that noted in Step 3:</p>
+<pre><code>switch(config)# show file bootflash:&lt;aci-image.bin&gt; md5sum
+</code></pre><p>Check the output of the <strong>show boot</strong> command to see if the bootvar is correctly set:</p>
+<pre><code>switch# show boot
+</code></pre><p>Reload the switch:</p>
+<pre><code>switch# reload
+</code></pre><p>Log in to the switch as an administrator to verify it is now running in ACI mode. Notice that the fabric discovery process has been started at this point. It may be some minutes before the services start and we are able to access the switch via the console.:</p>
+<p><strong>Example:</strong></p>
+<pre><code>User Access Verification
+(none) login: admin
+*****************************************************************************
+    Fabric discovery in progress, show commands are not fully functional
+    Logout and Login after discovery to continue to use show commands.
+*****************************************************************************
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>ACI - Basic Commands</title>
+            <link>https://cphannan.github.io/posts/2020/02/aci-basic-commands/</link>
             <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</guid>
+            <guid>https://cphannan.github.io/posts/2020/02/aci-basic-commands/</guid>
             <description>General Overview acidiag fnvread Displays the address and state of switch nodes registered with the fabric.
 Moquery Usage moquery --help usage: Command line cousin to visore [-h] [-i HOST] [-p PORT] [-d DN] [-c KLASS] [-f FILTER] [-a ATTRS] [-o OUTPUT] [-u USER] [-x [OPTIONS [OPTIONS ...]]] optional arguments: -h, --help show this help message and exit -i HOST, --host HOST Hostname or ip of apic -p PORT, --port PORT REST server port -d DN, --dn DN dn of the mo -c KLASS, --klass KLASS comma seperated class names to query -f FILTER, --filter FILTER property filter to accept/reject mos -a ATTRS, --attrs ATTRS type of attributes to display (config, all) -o OUTPUT, --output OUTPUT Display format (block, table, xml, json) -u USER, --user USER User name -x [OPTIONS [OPTIONS .</description>
             <content type="html"><![CDATA[<h2 id="general-overview">General Overview</h2>
@@ -97,7 +173,7 @@ Password strength check : yes
         </item>
         
         <item>
-            <title>VM Base Build</title>
+            <title>VM - Base Build</title>
             <link>https://cphannan.github.io/posts/2020/02/vm-base-build/</link>
             <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
             

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>aci on Christopher Hannan</title>
-    <link>https://cphannan.github.io/tags/aci/</link>
-    <description>Recent content in aci on Christopher Hannan</description>
+    <title>guides on Christopher Hannan</title>
+    <link>https://cphannan.github.io/tags/guides/</link>
+    <description>Recent content in guides on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cphannan.github.io/tags/aci/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cphannan.github.io/tags/guides/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -30,6 +30,15 @@ switch# show version 2.</description>
       <guid>https://cphannan.github.io/posts/2020/02/aci-basic-commands/</guid>
       <description>General Overview acidiag fnvread Displays the address and state of switch nodes registered with the fabric.
 Moquery Usage moquery --help usage: Command line cousin to visore [-h] [-i HOST] [-p PORT] [-d DN] [-c KLASS] [-f FILTER] [-a ATTRS] [-o OUTPUT] [-u USER] [-x [OPTIONS [OPTIONS ...]]] optional arguments: -h, --help show this help message and exit -i HOST, --host HOST Hostname or ip of apic -p PORT, --port PORT REST server port -d DN, --dn DN dn of the mo -c KLASS, --klass KLASS comma seperated class names to query -f FILTER, --filter FILTER property filter to accept/reject mos -a ATTRS, --attrs ATTRS type of attributes to display (config, all) -o OUTPUT, --output OUTPUT Display format (block, table, xml, json) -u USER, --user USER User name -x [OPTIONS [OPTIONS .</description>
+    </item>
+    
+    <item>
+      <title>VM - Base Build</title>
+      <link>https://cphannan.github.io/posts/2020/02/vm-base-build/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cphannan.github.io/posts/2020/02/vm-base-build/</guid>
+      <description>Update All Base Packages sudo apt -y update sudo apt -y upgrade sudo apt-get install software-properties-common reboot Install Additional Tools # Misc sudo apt -y install open-vm-tools sudo apt -y install python3-pip sudo apt -y install tree sudo pip3 install &amp;#39;ansible==2.8.6&amp;#39; sudo pip3 install paramiko #Terminator sudo apt-get -y install terminator #Sublime Text wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - sudo apt-add-repository &amp;#34;deb https://download.sublimetext.com/ apt/stable/&amp;#34; sudo apt-get update sudo apt-get install sublime-text #Generate SSH Key and add to Git ssh-keygen -o -t rsa -b 4096 -C &amp;lt;email_address&amp;gt; cat ~/.</description>
     </item>
     
   </channel>
