@@ -183,7 +183,7 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
 </code></pre><blockquote>
 <p><strong><em>Caution:</em></strong> Do not enter the copy running-config startup-config command after the boot aci command. If you do, the switch will go to the loader&gt; prompt.</p>
 </blockquote>
-<p>Verify the integrity of the file by displaying the MD5 checksum and comparing it to that noted in Step 3:</p>
+<p>Verify the integrity of the file by displaying the MD5 checksum and comparing it to that noted in Step 2:</p>
 <pre><code>switch(config)# show file bootflash:&lt;aci-image.bin&gt; md5sum
 </code></pre><p>Check the output of the <strong>show boot</strong> command to see if the bootvar is correctly set:</p>
 <pre><code>switch# show boot
