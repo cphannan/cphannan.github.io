@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/posts/2020/02/aci-converting-nx-os-to-aci-boot-mode/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cphannan.github.io/categories/</loc>
     <lastmod>2020-02-18T00:00:00+00:00</lastmod>
   </url>
@@ -24,6 +19,11 @@
   
   <url>
     <loc>https://cphannan.github.io/categories/cisco-aci/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</loc>
     <lastmod>2020-02-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,7 +43,7 @@
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/posts/2020/02/aci-basic-commands/</loc>
+    <loc>https://cphannan.github.io/posts/2020/02/basic-commands/</loc>
     <lastmod>2020-02-13T00:00:00+00:00</lastmod>
   </url>
   
