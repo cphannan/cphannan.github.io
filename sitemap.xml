@@ -53,17 +53,12 @@
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/categories/automation/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cphannan.github.io/tags/automation/</loc>
     <lastmod>2020-02-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/tags/cisco/</loc>
+    <loc>https://cphannan.github.io/categories/network-automation/</loc>
     <lastmod>2020-02-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -75,16 +70,6 @@
   <url>
     <loc>https://cphannan.github.io/posts/2020/02/basic-commands/</loc>
     <lastmod>2020-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/tags/vm/</loc>
-    <lastmod>2020-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/posts/2020/02/vm-base-build/</loc>
-    <lastmod>2020-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
