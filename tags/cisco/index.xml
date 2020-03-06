@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cisco on Christopher Hannan</title>
+    <title>Cisco on Christopher Hannan</title>
     <link>https://cphannan.github.io/tags/cisco/</link>
-    <description>Recent content in cisco on Christopher Hannan</description>
+    <description>Recent content in Cisco on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cphannan.github.io/tags/cisco/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>1.0 Architecture</title>
-      <link>https://cphannan.github.io/posts/2020/02/1.0-architecture/</link>
-      <pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate>
+      <title>Using Ansible to update the management ACL of IOS, IOS-XR and NX-OS devices</title>
+      <link>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</link>
+      <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cphannan.github.io/posts/2020/02/1.0-architecture/</guid>
-      <description>tbc&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>2.0 Virtualization</title>
-      <link>https://cphannan.github.io/posts/2020/02/2.0-virtualization/</link>
-      <pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://cphannan.github.io/posts/2020/02/2.0-virtualization/</guid>
-      <description>tbc&amp;hellip;</description>
+      <guid>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</guid>
+      <description>Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices Scenario: You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&amp;rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</description>
     </item>
     
   </channel>

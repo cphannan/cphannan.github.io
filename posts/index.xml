@@ -5,15 +5,26 @@
         <description>Recent content in Posts on Christopher Hannan</description>
         <generator>Hugo -- gohugo.io</generator>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://cphannan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Converting NX-OS to ACI Boot Mode</title>
-            <link>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</link>
-            <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
+            <title>ACI - Leaf Switch Replacement</title>
+            <link>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</link>
+            <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</guid>
+            <guid>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</guid>
+            <description>Work in progress&amp;hellip;</description>
+            <content type="html"><![CDATA[<p>Work in progress&hellip;</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>ACI - Converting NX-OS to ACI Boot Mode</title>
+            <link>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</link>
+            <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</guid>
             <description>Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
 1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
 switch# show version 2.</description>
@@ -24,18 +35,18 @@ switch# show version 2.</description>
 <pre><code>switch# show version
 </code></pre><h2 id="2-uploading-the-aci-image">2. Uploading the ACI image</h2>
 <p>The ACI image can be copied to the switch via SCP from the APIC, an SCP server or directly via USB.</p>
-<h3 id="method-1-using-scp-from-the-apic">Method 1: Using SCP from the APIC</h3>
-<h4 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC</h4>
+<h4 id="method-1-using-scp-from-the-apic">Method 1: Using SCP from the APIC</h4>
+<h5 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC</h5>
 <p>From the <strong>APIC CLI</strong>, view the ACI Out-of-band information and find a spare IP in the management network to use on the new switch:</p>
 <pre><code>apic1# show oob-mgmt
-</code></pre><p>Set the IP address on the mgmt0 interface of the new switch to allow connectivity between this interface and the APIC:</p>
+</code></pre><p>Set the IP address on the mgmt0 interface of the new switch to allow management connectivity between the new switch and the APIC:</p>
 <p><strong>Example:</strong></p>
 <pre><code>switch(config)# interface mgmt0
 
 switch(config-if)# ip address &lt;ip-address/length&gt;
 </code></pre><p>Patch the new switch into a spare port on the OOB management switch in the management VLAN. Confirm connectivity from the new switch to the APIC:</p>
 <pre><code>switch# ping &lt;apic-ip-address&gt;
-</code></pre><h4 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch</h4>
+</code></pre><h5 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch</h5>
 <p>Enable SCP services on the switch:</p>
 <pre><code>switch(config)# feature scp-server
 </code></pre><p>From the <strong>APIC CLI</strong>, view and take note of the currently installed leaf/spine switch firmware versions:</p>
@@ -44,14 +55,14 @@ switch(config-if)# ip address &lt;ip-address/length&gt;
 <pre><code>apic1# show firmware repository detail
 </code></pre><p>Use <strong>SCP</strong> to copy the firmware image from the APIC repository to the active supervisor module on the switch:</p>
 <pre><code>apic1# scp -r /firmware/fwrepos/fwrepo/&lt;aci-image.bin&gt; admin@&lt;switch-ip-address&gt;:&lt;aci-image.bin&gt;
-</code></pre><h3 id="method-2-using-usb">Method 2: Using USB</h3>
-<h4 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash</h4>
+</code></pre><h4 id="method-2-using-usb">Method 2: Using USB</h4>
+<h5 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash</h5>
 <pre><code>switch# dir usb1:
 switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
 </code></pre><hr>
 <blockquote>
-<p><strong><em>Note:</em></strong> For dual-supervisor systems, copy the ACI image from the active to the standby supervisor module.
-<strong>Example:</strong> <code>switch(config)# copy bootflash:&lt;aci-image.bin&gt; bootflash://sup-standby/</code></p>
+<p><strong><em>Note:</em></strong> <em>For dual-supervisor systems, copy the ACI image from the active to the standby supervisor module.
+<strong>Example:</strong> <code>switch(config)# copy bootflash:&lt;aci-image.bin&gt; bootflash://sup-standby/</code></em></p>
 </blockquote>
 <hr>
 <h2 id="3-boot-the-switch-to-the-aci-image">3. Boot the switch to the ACI image</h2>
@@ -60,20 +71,23 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
 </code></pre><p>Save the configuration:</p>
 <pre><code>switch(config)# copy running-config startup-config
 </code></pre><blockquote>
-<p><strong><em>Note:</em></strong> You must run the copy running-config startup-config command prior to booting the ACI image. Do not run it after you enter the boot aci command.</p>
+<p><strong><em>Note:</em></strong> <em>You must run the copy running-config startup-config command prior to booting the ACI image. Do not run it after you enter the boot aci command.</em></p>
 </blockquote>
 <p>Boot the switch with the ACI image:</p>
 <pre><code>switch(config)# boot aci bootflash:&lt;aci-image.bin&gt;
 </code></pre><blockquote>
-<p><strong><em>Caution:</em></strong> Do not enter the copy running-config startup-config command after the boot aci command. If you do, the switch will go to the loader&gt; prompt.</p>
+<p><strong><em>Caution:</em></strong> <em>Do not enter the copy running-config startup-config command after the boot aci command. If you do, the switch will go to the loader&gt; prompt.</em></p>
 </blockquote>
-<p>Verify the integrity of the file by displaying the MD5 checksum and comparing it to that noted in Step 2:</p>
+<p>Verify the integrity of the file by displaying the MD5 checksum and comparing it to that noted in Step 3:</p>
 <pre><code>switch(config)# show file bootflash:&lt;aci-image.bin&gt; md5sum
 </code></pre><p>Check the output of the <strong>show boot</strong> command to see if the bootvar is correctly set:</p>
 <pre><code>switch# show boot
 </code></pre><p>Reload the switch:</p>
 <pre><code>switch# reload
-</code></pre><p>Log in to the switch as an administrator to verify it is now running in ACI mode. Notice that the fabric discovery process has been started at this point. It may be some minutes before the services start and we are able to access the switch via the console.:</p>
+</code></pre><blockquote>
+<p><strong><em>Note:</em></strong> <em>This reload and conversion can take up to 30 minutes to complete.</em></p>
+</blockquote>
+<p>Log in to the switch as an administrator to verify it is now running in ACI mode. Notice that the fabric discovery process has been started at this point. It may be some minutes before the services start and we are able to access the switch via the console.:</p>
 <p><strong>Example:</strong></p>
 <pre><code>User Access Verification
 (none) login: admin
@@ -81,7 +95,134 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
     Fabric discovery in progress, show commands are not fully functional
     Logout and Login after discovery to continue to use show commands.
 *****************************************************************************
-</code></pre>]]></content>
+</code></pre><hr>
+<p>You can now log in to ACI and follow the steps documented in <a href="/posts/2020/03/aci-leaf-switch-replacement/">ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
+<blockquote>
+<p><strong><em>Note:</em></strong> <em>When commissioned, the new switch may show a degraded health and list faults for a firmware version mismatch of both the BIOS and FPGA firmware. This is because a conversion to ACI basically just boots the switch into the ACI image and, since no install scripts are acting on the box, all the auxiliary steps (that would be performed during a normal upgrade) are not done.</em></p>
+<p><em>Normally these faults do not pose an issue and the BIOS and FPGA will be upgraded with the next ACI upgrade administered from the APIC. Alternatively, the BIOS and FPGA firmware can be manually upgraded as follows:</em></p>
+<p><strong>FPGA Upgrade (requires a reload)</strong>
+<code>/bin/check-fpga.sh FpGaDoWnGrAdE</code>
+<code>/usr/sbin/chassis-power-cycle.sh</code></p>
+<p><strong>BIOS Upgrade (requires Cisco TAC)</strong>
+<em>For the manual upgrade of the BIOS you will need to raise a service request with Cisco so that one of their TAC engineers can assist via a Webex session. There&rsquo;s an enhancement filed to improve this to make the upgrade automatic, however, it&rsquo;s not implemented yet (CSCvm40571).</em></p>
+<p><strong>Workaround</strong>
+<em>Another option to address this issue is to convert the new switch to an ACI firmware version that is N -1. The switch can then be added to the Fabric and auto-upgraded from the APIC to the correct ACI, BIOS and FPGA versions.</em></p>
+</blockquote>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Using Ansible to update the management ACL of IOS, IOS-XR and NX-OS devices</title>
+            <link>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</link>
+            <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</guid>
+            <description>Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices Scenario: You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&amp;rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</description>
+            <content type="html"><![CDATA[<h2 id="using-ansible-to-update-the-management-acl-access-list-on-cisco-ios-ios-xr-and-nx-os-devices">Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices</h2>
+<p><strong>Scenario:</strong> You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</p>
+<p>You have been tasked with updating this management access-list to include a new Host or Subnet. To manually do this it would require days, if not weeks, of your time and would be a mundane process that would likely lead to errors or devices missed. Instead you decide to develop an Ansible role that automates this configuration for you.</p>
+<h3 id="the-ansible-inventory">The Ansible inventory</h3>
+<p>Our environment follows one of <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" title="Ansible's Best Practices">Ansible&rsquo;s</a> best practice directory layouts. The top level of the directory would contain a separate production and development inventory directory, with each having its own group_vars/host_vars.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">inventories/</span>
+   <span class="na">production/</span>
+      <span class="na">hosts              # inventory file for production network</span>
+      <span class="na">group_vars/        # here we assign variables to particular groups</span>
+         <span class="na">all.yml</span>
+         <span class="na">ios.yml</span>
+         <span class="na">iosxr.yml</span>
+         <span class="na">nxos.yml</span>
+      <span class="na">host_vars/         # here we assign variables to particular systems</span>
+         <span class="na">ioshost1.yml</span>
+         <span class="na">iosxrhost1.yml</span>
+         <span class="na">nxoshost1.yml</span>
+
+   <span class="na">development/</span>
+      <span class="na">hosts               # inventory file for development network</span>
+      <span class="na">group_vars/</span>
+         <span class="na">group1.yml       # here we assign variables to particular groups</span>
+         <span class="na">group2.yml</span>
+      <span class="na">host_vars/</span>
+         <span class="na">devhost1.yml     # here we assign variables to particular systems</span>
+         <span class="na">devhost2.yml</span>
+
+<span class="na">playbook_1.yml</span>
+<span class="na">playbook_2.yml</span>
+<span class="na">playbook_3.yml</span>
+
+<span class="na">roles/</span>
+    <span class="na">role1/</span>
+        <span class="na">tasks/</span>
+        <span class="na">handlers/</span>
+        <span class="na">files/</span>
+        <span class="na">templates/</span>
+        <span class="na">vars/</span>
+        <span class="na">defaults/</span>
+        <span class="na">meta/</span>
+    <span class="na">role2/</span>
+        <span class="na">tasks/</span>
+        <span class="na">defaults/</span>
+        <span class="na">meta/</span>
+</code></pre></div><p>The production inventory file categorises each device by operating system and location.</p>
+<h3 id="1-initializing-the-new-role">1. Initializing the new role</h3>
+<p>From the root of your Ansible directory, change to the <em>roles</em> directory and create the new role:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> roles/
+ansible-galaxy init management_acl
+</code></pre></div><p>The role is initialized using the <em>ansible-galaxy init</em> command. This builds an empty role with the below base structure:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">roles/
+    management_acl/
+        tasks/
+        handlers/
+        files/
+        templates/
+        vars/
+        defaults/
+        meta/
+
+</code></pre></div><h3 id="2-creating-the-configuration-tasks">2. Creating the configuration tasks</h3>
+<p>Now that we have our base role created in <em>ansible/roles/</em> we need to write the configuration tasks within the role for each Cisco operating system (IOS, IOS-XR and NXOS). This is done within the <em>tasks</em> directory of the role.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> roles/management_acl/tasks/
+touch ios_config.yml ios-xr_config.yml nxos_config.yml
+</code></pre></div><p>The code for this role and the above configuration tasks can be found <a href="https://github.com/cphannan/ansible" title="GitHub">here</a>. But to summarise, a combination of show commands and regex will be used in each OS specific configuration file to perform the following tasks:</p>
+<ol>
+<li>Use the Ansible modules <a href="https://docs.ansible.com/ansible/latest/modules/ios_command_module.html" title="ios_command"><code>ios_command</code></a>, <a href="https://docs.ansible.com/ansible/latest/modules/iosxr_command_module.html" title="iosxr_command"><code>iosxr_command</code></a> or <a href="https://docs.ansible.com/ansible/latest/modules/nxos_command_module.html" title="nxos_command"><code>nxos_command</code></a> to issue the relevant show command required to discover the management access-list name. All output from the show command will be registered as the variable &ldquo;<strong>name</strong>&quot;.</li>
+<li>Use Regex to parse the variable <em>name.stdout</em> and register the management access-list name/number as the variable &ldquo;<strong>aclNAME</strong>&quot;.</li>
+<li>Fail for any device with no management access-list configured, do not execute any further tasks and print a debug message to the terminal.</li>
+<li>Use the same Ansible modules from Step 1 and the &ldquo;aclNAME&rdquo; variable from Step 2 to view the management access-list configuration. This also shows the access-list type and all output from the show command will be registered as the variable &ldquo;<strong>type</strong>&quot;.</li>
+<li>Use Regex to parse the variable <em>type.stdout</em> and register the management access-list type (standard | extended) as the variable &ldquo;<strong>aclTYPE</strong>&quot;.</li>
+</ol>
+<p>For every device we now have the management access-list name (<strong>aclNAME</strong>) and type (<strong>aclTYPE</strong>) registered as variables that can be used to apply the new configuration.&rdquo;</p>
+<ol start="6">
+<li>
+<p>Use the Ansible modules <a href="https://docs.ansible.com/ansible/latest/modules/ios_config_module.html" title="ios_config"><code>ios_config</code></a>, <a href="https://docs.ansible.com/ansible/latest/modules/iosxr_config_module.html" title="iosxr_config"><code>iosxr_config</code></a> or <a href="https://docs.ansible.com/ansible/latest/modules/nxos_config_module.html" title="nxos_config"><code>nxos_config</code></a> to:
+6.1 Remove the explicit deny statement (if present).
+6.2 Add the new Host or Subnet entry.
+6.3 Add the explicit deny statement with logging.</p>
+</li>
+<li>
+<p>Use the same Ansible modules from Step 6 to resequence the management access-list (start at 10, increment by 10) and save the configuration.</p>
+</li>
+</ol>
+<h3 id="3-creating-the-playbook">3. Creating the playbook</h3>
+<p>The playbook is used to call the role we have developed and specifies some playbook level parameters such as the hosts to target and the connection type to use.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w">
+</span><span class="w"></span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>PLAY<span class="w"> </span>- Management<span class="w"> </span>ACL<span class="w"> </span>Playbook<span class="w">
+</span><span class="w">  </span><span class="k">hosts</span><span class="p">:</span><span class="w"> </span>ios<span class="p">,</span>iosxr<span class="p">,</span>nxos<span class="w">                     </span><span class="c"># Uses a device (or group) in our inventory file</span><span class="w">
+</span><span class="w">  </span><span class="k">gather_facts</span><span class="p">:</span><span class="w"> </span>no<span class="w">                          </span><span class="c"># Disables fact gathering for the above hosts</span><span class="w">
+</span><span class="w">  </span><span class="k">connection</span><span class="p">:</span><span class="w"> </span>network_cli<span class="w">                   </span><span class="c"># Used for network devices with a limited execution environment</span><span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="k">vars</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">cfg_acl</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- no<span class="w"> </span>deny<span class="w"> </span>any<span class="w">
+</span><span class="w">          </span>- permit<span class="w"> </span>{{<span class="w"> </span>acl<span class="w"> </span>}}<span class="w">
+</span><span class="w">          </span>- deny<span class="w"> </span>any<span class="w"> </span>log<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">roles</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- management_acl<span class="w">
+</span></code></pre></div><h4 id="executing-the-playbook">Executing the Playbook</h4>
+<p>The playbook can then be invoked from your terminal by using the ansible-playbook command and passing the playbook file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cph@cph:~$ ansible-playbook management_acl -i inventories/production/
+</code></pre></div>]]></content>
         </item>
         
         <item>

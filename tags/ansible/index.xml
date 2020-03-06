@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Automation on Christopher Hannan</title>
-    <link>https://cphannan.github.io/categories/automation/</link>
-    <description>Recent content in Automation on Christopher Hannan</description>
+    <title>Ansible on Christopher Hannan</title>
+    <link>https://cphannan.github.io/tags/ansible/</link>
+    <description>Recent content in Ansible on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Wed, 26 Feb 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cphannan.github.io/categories/automation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cphannan.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</guid>
       <description>Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices Scenario: You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&amp;rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</description>
-    </item>
-    
-    <item>
-      <title>VM - Base Build</title>
-      <link>https://cphannan.github.io/posts/2020/02/vm-base-build/</link>
-      <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://cphannan.github.io/posts/2020/02/vm-base-build/</guid>
-      <description>Update All Base Packages sudo apt -y update sudo apt -y upgrade sudo apt-get install software-properties-common reboot Install Additional Tools # Misc sudo apt -y install open-vm-tools sudo apt -y install python-pip sudo apt -y install python3-pip sudo apt-get -y install python3-venv sudo apt -y install tree sudo pip install pyopenssl sudo pip3 install &amp;#39;ansible==2.8.6&amp;#39; sudo pip3 install paramiko #Terminator sudo apt-get -y install terminator #Sublime Text wget -qO - https://download.</description>
     </item>
     
   </channel>

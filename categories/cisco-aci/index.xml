@@ -6,17 +6,26 @@
     <description>Recent content in Cisco ACI on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cphannan.github.io/categories/cisco-aci/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Converting NX-OS to ACI Boot Mode</title>
-      <link>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</link>
-      <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
+      <title>ACI - Leaf Switch Replacement</title>
+      <link>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</guid>
+      <guid>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</guid>
+      <description>Work in progress&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>ACI - Converting NX-OS to ACI Boot Mode</title>
+      <link>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</guid>
       <description>Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
 1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
 switch# show version 2.</description>

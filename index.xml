@@ -6,20 +6,38 @@
     <description>Recent content on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cphannan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Converting NX-OS to ACI Boot Mode</title>
-      <link>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</link>
-      <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
+      <title>ACI - Leaf Switch Replacement</title>
+      <link>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cphannan.github.io/posts/2020/02/converting-nx-os-to-aci-boot-mode/</guid>
+      <guid>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</guid>
+      <description>Work in progress&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>ACI - Converting NX-OS to ACI Boot Mode</title>
+      <link>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</guid>
       <description>Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
 1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
 switch# show version 2.</description>
+    </item>
+    
+    <item>
+      <title>Using Ansible to update the management ACL of IOS, IOS-XR and NX-OS devices</title>
+      <link>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</link>
+      <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</guid>
+      <description>Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices Scenario: You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&amp;rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</description>
     </item>
     
     <item>
@@ -50,15 +68,6 @@ Moquery Usage moquery --help usage: Command line cousin to visore [-h] [-i HOST]
       <description>I&amp;rsquo;m a network engineer, specialising in Cisco networking technologies and with a ﬁrst-class honours networking degree.
 I currently work full-time in Leeds for one of the world&amp;rsquo;s biggest bookmakers. Using the Agile methodology, I am part of a specialist &amp;ldquo;SDN&amp;rdquo; team that collaborates on network automation projects.
 I started this website as a place to document my development, from a traditional network engineer using a CLI to manually configure one device at a time, to a &amp;ldquo;NetDevOps&amp;rdquo; engineer utilising tools such as Ansible, Git and Python programming.</description>
-    </item>
-    
-    <item>
-      <title>CV</title>
-      <link>https://cphannan.github.io/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cphannan.github.io/cv/</guid>
-      <description>Technical Skills  Cisco Routing, Switching and Security Network design,configuration and installation Cisco ASA (L2L | RA VPNs, NAT, ACLs etc) Network automation tooling (Ansible, YAML, Jinja2 etc) Good hands-on knowledge of Git Version Control System  Professional Certifications  Cisco CCENT Cisco CCNA Routing &amp;amp; Switching Cisco CCNA Security Cisco CCNA CyberOps Cisco Meraki Network Associate (CMNA) Cisco Security Architecture for Systems Engineers (SASE)  Work Experience Network &amp;amp; Security Engineer (SDN) - William Hill (Leeds) | 05.</description>
     </item>
     
   </channel>
