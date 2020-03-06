@@ -29,23 +29,5 @@
       <description></description>
     </item>
     
-    <item>
-      <title>Ansible</title>
-      <link>https://cphannan.github.io/tags/ansible/</link>
-      <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://cphannan.github.io/tags/ansible/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>automation</title>
-      <link>https://cphannan.github.io/tags/automation/</link>
-      <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://cphannan.github.io/tags/automation/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

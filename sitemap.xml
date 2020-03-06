@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</loc>
-    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cphannan.github.io/categories/</loc>
     <lastmod>2020-03-06T00:00:00+00:00</lastmod>
   </url>
@@ -24,6 +19,11 @@
   
   <url>
     <loc>https://cphannan.github.io/categories/cisco-aci/</loc>
+    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</loc>
     <lastmod>2020-03-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,32 +43,12 @@
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</loc>
+    <loc>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cphannan.github.io/tags/ansible/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/tags/automation/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/categories/network-automation/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/posts/2020/02/basic-commands/</loc>
+    <loc>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</loc>
     <lastmod>2020-02-13T00:00:00+00:00</lastmod>
   </url>
   

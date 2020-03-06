@@ -9,22 +9,22 @@
         <atom:link href="https://cphannan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>ACI - Leaf Switch Replacement</title>
-            <link>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</link>
+            <title>Cisco ACI - Leaf Switch Replacement</title>
+            <link>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</link>
             <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/</guid>
+            <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</guid>
             <description>Work in progress&amp;hellip;</description>
             <content type="html"><![CDATA[<p>Work in progress&hellip;</p>
 ]]></content>
         </item>
         
         <item>
-            <title>ACI - Converting NX-OS to ACI Boot Mode</title>
-            <link>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</link>
+            <title>Cisco ACI - Converting NX-OS to ACI Boot Mode</title>
+            <link>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</link>
             <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://cphannan.github.io/posts/2020/03/aci-converting-nx-os-to-aci-boot-mode/</guid>
+            <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</guid>
             <description>Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
 1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
 switch# show version 2.</description>
@@ -112,125 +112,11 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
         </item>
         
         <item>
-            <title>Using Ansible to update the management ACL of IOS, IOS-XR and NX-OS devices</title>
-            <link>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</link>
-            <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://cphannan.github.io/posts/2020/02/using-ansible-to-update-the-management-acl-of-ios-ios-xr-and-nx-os-devices/</guid>
-            <description>Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices Scenario: You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&amp;rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</description>
-            <content type="html"><![CDATA[<h2 id="using-ansible-to-update-the-management-acl-access-list-on-cisco-ios-ios-xr-and-nx-os-devices">Using Ansible to update the management ACL (access-list) on Cisco IOS, IOS-XR and NX-OS devices</h2>
-<p><strong>Scenario:</strong> You have a large brownfield environment that is a mixture of Cisco IOS, IOS-XR and NX-OS devices. The configuration of these devices has been previously managed manually and as such, there is no standard configuration. Each of the operating systems has a slightly different syntax for making changes and each device&rsquo;s access-list for management access could be any name or number and be either a standard or extended access-list.</p>
-<p>You have been tasked with updating this management access-list to include a new Host or Subnet. To manually do this it would require days, if not weeks, of your time and would be a mundane process that would likely lead to errors or devices missed. Instead you decide to develop an Ansible role that automates this configuration for you.</p>
-<h3 id="the-ansible-inventory">The Ansible inventory</h3>
-<p>Our environment follows one of <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" title="Ansible's Best Practices">Ansible&rsquo;s</a> best practice directory layouts. The top level of the directory would contain a separate production and development inventory directory, with each having its own group_vars/host_vars.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">inventories/</span>
-   <span class="na">production/</span>
-      <span class="na">hosts              # inventory file for production network</span>
-      <span class="na">group_vars/        # here we assign variables to particular groups</span>
-         <span class="na">all.yml</span>
-         <span class="na">ios.yml</span>
-         <span class="na">iosxr.yml</span>
-         <span class="na">nxos.yml</span>
-      <span class="na">host_vars/         # here we assign variables to particular systems</span>
-         <span class="na">ioshost1.yml</span>
-         <span class="na">iosxrhost1.yml</span>
-         <span class="na">nxoshost1.yml</span>
-
-   <span class="na">development/</span>
-      <span class="na">hosts               # inventory file for development network</span>
-      <span class="na">group_vars/</span>
-         <span class="na">group1.yml       # here we assign variables to particular groups</span>
-         <span class="na">group2.yml</span>
-      <span class="na">host_vars/</span>
-         <span class="na">devhost1.yml     # here we assign variables to particular systems</span>
-         <span class="na">devhost2.yml</span>
-
-<span class="na">playbook_1.yml</span>
-<span class="na">playbook_2.yml</span>
-<span class="na">playbook_3.yml</span>
-
-<span class="na">roles/</span>
-    <span class="na">role1/</span>
-        <span class="na">tasks/</span>
-        <span class="na">handlers/</span>
-        <span class="na">files/</span>
-        <span class="na">templates/</span>
-        <span class="na">vars/</span>
-        <span class="na">defaults/</span>
-        <span class="na">meta/</span>
-    <span class="na">role2/</span>
-        <span class="na">tasks/</span>
-        <span class="na">defaults/</span>
-        <span class="na">meta/</span>
-</code></pre></div><p>The production inventory file categorises each device by operating system and location.</p>
-<h3 id="1-initializing-the-new-role">1. Initializing the new role</h3>
-<p>From the root of your Ansible directory, change to the <em>roles</em> directory and create the new role:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> roles/
-ansible-galaxy init management_acl
-</code></pre></div><p>The role is initialized using the <em>ansible-galaxy init</em> command. This builds an empty role with the below base structure:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">roles/
-    management_acl/
-        tasks/
-        handlers/
-        files/
-        templates/
-        vars/
-        defaults/
-        meta/
-
-</code></pre></div><h3 id="2-creating-the-configuration-tasks">2. Creating the configuration tasks</h3>
-<p>Now that we have our base role created in <em>ansible/roles/</em> we need to write the configuration tasks within the role for each Cisco operating system (IOS, IOS-XR and NXOS). This is done within the <em>tasks</em> directory of the role.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> roles/management_acl/tasks/
-touch ios_config.yml ios-xr_config.yml nxos_config.yml
-</code></pre></div><p>The code for this role and the above configuration tasks can be found <a href="https://github.com/cphannan/ansible" title="GitHub">here</a>. But to summarise, a combination of show commands and regex will be used in each OS specific configuration file to perform the following tasks:</p>
-<ol>
-<li>Use the Ansible modules <a href="https://docs.ansible.com/ansible/latest/modules/ios_command_module.html" title="ios_command"><code>ios_command</code></a>, <a href="https://docs.ansible.com/ansible/latest/modules/iosxr_command_module.html" title="iosxr_command"><code>iosxr_command</code></a> or <a href="https://docs.ansible.com/ansible/latest/modules/nxos_command_module.html" title="nxos_command"><code>nxos_command</code></a> to issue the relevant show command required to discover the management access-list name. All output from the show command will be registered as the variable &ldquo;<strong>name</strong>&quot;.</li>
-<li>Use Regex to parse the variable <em>name.stdout</em> and register the management access-list name/number as the variable &ldquo;<strong>aclNAME</strong>&quot;.</li>
-<li>Fail for any device with no management access-list configured, do not execute any further tasks and print a debug message to the terminal.</li>
-<li>Use the same Ansible modules from Step 1 and the &ldquo;aclNAME&rdquo; variable from Step 2 to view the management access-list configuration. This also shows the access-list type and all output from the show command will be registered as the variable &ldquo;<strong>type</strong>&quot;.</li>
-<li>Use Regex to parse the variable <em>type.stdout</em> and register the management access-list type (standard | extended) as the variable &ldquo;<strong>aclTYPE</strong>&quot;.</li>
-</ol>
-<p>For every device we now have the management access-list name (<strong>aclNAME</strong>) and type (<strong>aclTYPE</strong>) registered as variables that can be used to apply the new configuration.&rdquo;</p>
-<ol start="6">
-<li>
-<p>Use the Ansible modules <a href="https://docs.ansible.com/ansible/latest/modules/ios_config_module.html" title="ios_config"><code>ios_config</code></a>, <a href="https://docs.ansible.com/ansible/latest/modules/iosxr_config_module.html" title="iosxr_config"><code>iosxr_config</code></a> or <a href="https://docs.ansible.com/ansible/latest/modules/nxos_config_module.html" title="nxos_config"><code>nxos_config</code></a> to:
-6.1 Remove the explicit deny statement (if present).
-6.2 Add the new Host or Subnet entry.
-6.3 Add the explicit deny statement with logging.</p>
-</li>
-<li>
-<p>Use the same Ansible modules from Step 6 to resequence the management access-list (start at 10, increment by 10) and save the configuration.</p>
-</li>
-</ol>
-<h3 id="3-creating-the-playbook">3. Creating the playbook</h3>
-<p>The playbook is used to call the role we have developed and specifies some playbook level parameters such as the hosts to target and the connection type to use.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
-</span><span class="w">
-</span><span class="w"></span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>PLAY<span class="w"> </span>- Management<span class="w"> </span>ACL<span class="w"> </span>Playbook<span class="w">
-</span><span class="w">  </span><span class="k">hosts</span><span class="p">:</span><span class="w"> </span>ios<span class="p">,</span>iosxr<span class="p">,</span>nxos<span class="w">                     </span><span class="c"># Uses a device (or group) in our inventory file</span><span class="w">
-</span><span class="w">  </span><span class="k">gather_facts</span><span class="p">:</span><span class="w"> </span>no<span class="w">                          </span><span class="c"># Disables fact gathering for the above hosts</span><span class="w">
-</span><span class="w">  </span><span class="k">connection</span><span class="p">:</span><span class="w"> </span>network_cli<span class="w">                   </span><span class="c"># Used for network devices with a limited execution environment</span><span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="k">vars</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">cfg_acl</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- no<span class="w"> </span>deny<span class="w"> </span>any<span class="w">
-</span><span class="w">          </span>- permit<span class="w"> </span>{{<span class="w"> </span>acl<span class="w"> </span>}}<span class="w">
-</span><span class="w">          </span>- deny<span class="w"> </span>any<span class="w"> </span>log<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">roles</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- management_acl<span class="w">
-</span></code></pre></div><h4 id="executing-the-playbook">Executing the Playbook</h4>
-<p>The playbook can then be invoked from your terminal by using the ansible-playbook command and passing the playbook file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cph@cph:~$ ansible-playbook management_acl -i inventories/production/
-</code></pre></div>]]></content>
-        </item>
-        
-        <item>
-            <title>Basic Commands</title>
-            <link>https://cphannan.github.io/posts/2020/02/basic-commands/</link>
+            <title>Cisco ACI - Basic Commands</title>
+            <link>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</link>
             <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://cphannan.github.io/posts/2020/02/basic-commands/</guid>
+            <guid>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</guid>
             <description>General Overview acidiag fnvread Displays the address and state of switch nodes registered with the fabric.
 Moquery Usage moquery --help usage: Command line cousin to visore [-h] [-i HOST] [-p PORT] [-d DN] [-c KLASS] [-f FILTER] [-a ATTRS] [-o OUTPUT] [-u USER] [-x [OPTIONS [OPTIONS ...]]] optional arguments: -h, --help show this help message and exit -i HOST, --host HOST Hostname or ip of apic -p PORT, --port PORT REST server port -d DN, --dn DN dn of the mo -c KLASS, --klass KLASS comma seperated class names to query -f FILTER, --filter FILTER property filter to accept/reject mos -a ATTRS, --attrs ATTRS type of attributes to display (config, all) -o OUTPUT, --output OUTPUT Display format (block, table, xml, json) -u USER, --user USER User name -x [OPTIONS [OPTIONS .</description>
             <content type="html"><![CDATA[<h2 id="general-overview">General Overview</h2>
