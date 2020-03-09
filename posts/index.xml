@@ -25,18 +25,21 @@
             <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
             
             <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</guid>
-            <description>Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
-switch# show version 2.</description>
-            <content type="html"><![CDATA[<h1 id="converting-to-aci-boot-mode">Converting to ACI Boot Mode</h1>
+            <description>Converting NX-OS to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:</description>
+            <content type="html"><![CDATA[<h1 id="converting-nx-os-to-aci-boot-mode">Converting NX-OS to ACI Boot Mode</h1>
 <p>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.</p>
 <h2 id="1-verify-which-mode-the-switch-is-running-aci-or-nx-os">1. Verify which mode the switch is running (ACI or NX-OS)</h2>
 <p>Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:</p>
 <pre><code>switch# show version
 </code></pre><h2 id="2-uploading-the-aci-image">2. Uploading the ACI image</h2>
-<p>The ACI image can be copied to the switch via SCP from the APIC, an SCP server or directly via USB.</p>
-<h4 id="method-1-using-scp-from-the-apic">Method 1: Using SCP from the APIC</h4>
-<h5 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC</h5>
+<p>The ACI image can be copied to the switch directly via USB or via SCP from the APIC or an SCP server.</p>
+<h4 id="method-1-using-usb">Method 1: Using USB</h4>
+<h5 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash:</h5>
+<pre><code>switch# dir usb1:
+switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
+</code></pre><h4 id="method-2-using-scp-from-the-apic">Method 2: Using SCP from the APIC</h4>
+<h5 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC:</h5>
 <p>From the <strong>APIC CLI</strong>, view the ACI Out-of-band information and find a spare IP in the management network to use on the new switch:</p>
 <pre><code>apic1# show oob-mgmt
 </code></pre><p>Set the IP address on the mgmt0 interface of the new switch to allow management connectivity between the new switch and the APIC:</p>
@@ -44,9 +47,9 @@ switch# show version 2.</description>
 <pre><code>switch(config)# interface mgmt0
 
 switch(config-if)# ip address &lt;ip-address/length&gt;
-</code></pre><p>Patch the new switch into a spare port on the OOB management switch in the management VLAN. Confirm connectivity from the new switch to the APIC:</p>
+</code></pre><p>Patch interface mgmt0 on the new switch into the management network. Confirm connectivity from the new switch to the APIC:</p>
 <pre><code>switch# ping &lt;apic-ip-address&gt;
-</code></pre><h5 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch</h5>
+</code></pre><h5 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch:</h5>
 <p>Enable SCP services on the switch:</p>
 <pre><code>switch(config)# feature scp-server
 </code></pre><p>From the <strong>APIC CLI</strong>, view and take note of the currently installed leaf/spine switch firmware versions:</p>
@@ -55,10 +58,6 @@ switch(config-if)# ip address &lt;ip-address/length&gt;
 <pre><code>apic1# show firmware repository detail
 </code></pre><p>Use <strong>SCP</strong> to copy the firmware image from the APIC repository to the active supervisor module on the switch:</p>
 <pre><code>apic1# scp -r /firmware/fwrepos/fwrepo/&lt;aci-image.bin&gt; admin@&lt;switch-ip-address&gt;:&lt;aci-image.bin&gt;
-</code></pre><h4 id="method-2-using-usb">Method 2: Using USB</h4>
-<h5 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash</h5>
-<pre><code>switch# dir usb1:
-switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
 </code></pre><hr>
 <blockquote>
 <p><strong><em>Note:</em></strong> <em>For dual-supervisor systems, copy the ACI image from the active to the standby supervisor module.
@@ -95,8 +94,8 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
     Fabric discovery in progress, show commands are not fully functional
     Logout and Login after discovery to continue to use show commands.
 *****************************************************************************
-</code></pre><hr>
-<p>You can now log in to ACI and follow the steps documented in <a href="/posts/2020/03/aci-leaf-switch-replacement/">ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
+</code></pre><p>You can now log in to ACI and follow the steps documented in <a href="/posts/2020/03/cisco-aci-leaf-switch-replacement/">ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
+<hr>
 <blockquote>
 <p><strong><em>Note:</em></strong> <em>When commissioned, the new switch may show a degraded health and list faults for a firmware version mismatch of both the BIOS and FPGA firmware. This is because a conversion to ACI basically just boots the switch into the ACI image and, since no install scripts are acting on the box, all the auxiliary steps (that would be performed during a normal upgrade) are not done.</em></p>
 <p><em>Normally these faults do not pose an issue and the BIOS and FPGA will be upgraded with the next ACI upgrade administered from the APIC. Alternatively, the BIOS and FPGA firmware can be manually upgraded as follows:</em></p>

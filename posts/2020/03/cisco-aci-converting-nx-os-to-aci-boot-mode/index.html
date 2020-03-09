@@ -5,10 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Christopher Hannan">
-<meta name="description" content="Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
-switch# show version 2." />
-<meta name="keywords" content="blog,networking,automation,personal, aci, guides" />
+<meta name="description" content="Converting NX-OS to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:" />
+<meta name="keywords" content="blog,networking,automation,personal, aci, nxos, guides" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
 <link rel="canonical" href="https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/" />
@@ -33,23 +32,21 @@ switch# show version 2." />
 
 
 <meta itemprop="name" content="Cisco ACI - Converting NX-OS to ACI Boot Mode">
-<meta itemprop="description" content="Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:
-switch# show version 2.">
+<meta itemprop="description" content="Converting NX-OS to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:">
 <meta itemprop="datePublished" content="2020-03-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="800">
+<meta itemprop="wordCount" content="796">
 <meta itemprop="image" content="https://cphannan.github.io/avatar.png"/>
 
 
 
-<meta itemprop="keywords" content="aci,guides," /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="aci,nxos,guides," /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cphannan.github.io/avatar.png"/>
 
 <meta name="twitter:title" content="Cisco ACI - Converting NX-OS to ACI Boot Mode"/>
-<meta name="twitter:description" content="Converting to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:
-switch# show version 2."/>
+<meta name="twitter:description" content="Converting NX-OS to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:"/>
 
 
 
@@ -133,15 +130,19 @@ switch# show version 2."/>
             
 
             <div class="post-content">
-                <h1 id="converting-to-aci-boot-mode">Converting to ACI Boot Mode</h1>
+                <h1 id="converting-nx-os-to-aci-boot-mode">Converting NX-OS to ACI Boot Mode</h1>
 <p>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.</p>
 <h2 id="1-verify-which-mode-the-switch-is-running-aci-or-nx-os">1. Verify which mode the switch is running (ACI or NX-OS)</h2>
 <p>Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:</p>
 <pre><code>switch# show version
 </code></pre><h2 id="2-uploading-the-aci-image">2. Uploading the ACI image</h2>
-<p>The ACI image can be copied to the switch via SCP from the APIC, an SCP server or directly via USB.</p>
-<h4 id="method-1-using-scp-from-the-apic">Method 1: Using SCP from the APIC</h4>
-<h5 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC</h5>
+<p>The ACI image can be copied to the switch directly via USB or via SCP from the APIC or an SCP server.</p>
+<h4 id="method-1-using-usb">Method 1: Using USB</h4>
+<h5 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash:</h5>
+<pre><code>switch# dir usb1:
+switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
+</code></pre><h4 id="method-2-using-scp-from-the-apic">Method 2: Using SCP from the APIC</h4>
+<h5 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC:</h5>
 <p>From the <strong>APIC CLI</strong>, view the ACI Out-of-band information and find a spare IP in the management network to use on the new switch:</p>
 <pre><code>apic1# show oob-mgmt
 </code></pre><p>Set the IP address on the mgmt0 interface of the new switch to allow management connectivity between the new switch and the APIC:</p>
@@ -149,9 +150,9 @@ switch# show version 2."/>
 <pre><code>switch(config)# interface mgmt0
 
 switch(config-if)# ip address &lt;ip-address/length&gt;
-</code></pre><p>Patch the new switch into a spare port on the OOB management switch in the management VLAN. Confirm connectivity from the new switch to the APIC:</p>
+</code></pre><p>Patch interface mgmt0 on the new switch into the management network. Confirm connectivity from the new switch to the APIC:</p>
 <pre><code>switch# ping &lt;apic-ip-address&gt;
-</code></pre><h5 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch</h5>
+</code></pre><h5 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch:</h5>
 <p>Enable SCP services on the switch:</p>
 <pre><code>switch(config)# feature scp-server
 </code></pre><p>From the <strong>APIC CLI</strong>, view and take note of the currently installed leaf/spine switch firmware versions:</p>
@@ -160,10 +161,6 @@ switch(config-if)# ip address &lt;ip-address/length&gt;
 <pre><code>apic1# show firmware repository detail
 </code></pre><p>Use <strong>SCP</strong> to copy the firmware image from the APIC repository to the active supervisor module on the switch:</p>
 <pre><code>apic1# scp -r /firmware/fwrepos/fwrepo/&lt;aci-image.bin&gt; admin@&lt;switch-ip-address&gt;:&lt;aci-image.bin&gt;
-</code></pre><h4 id="method-2-using-usb">Method 2: Using USB</h4>
-<h5 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash</h5>
-<pre><code>switch# dir usb1:
-switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
 </code></pre><hr>
 <blockquote>
 <p><strong><em>Note:</em></strong> <em>For dual-supervisor systems, copy the ACI image from the active to the standby supervisor module.
@@ -200,8 +197,8 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
     Fabric discovery in progress, show commands are not fully functional
     Logout and Login after discovery to continue to use show commands.
 *****************************************************************************
-</code></pre><hr>
-<p>You can now log in to ACI and follow the steps documented in <a href="https://cphannan.github.io/posts/2020/03/aci-leaf-switch-replacement/">ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
+</code></pre><p>You can now log in to ACI and follow the steps documented in <a href="https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/">ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
+<hr>
 <blockquote>
 <p><strong><em>Note:</em></strong> <em>When commissioned, the new switch may show a degraded health and list faults for a firmware version mismatch of both the BIOS and FPGA firmware. This is because a conversion to ACI basically just boots the switch into the ACI image and, since no install scripts are acting on the box, all the auxiliary steps (that would be performed during a normal upgrade) are not done.</em></p>
 <p><em>Normally these faults do not pose an issue and the BIOS and FPGA will be upgraded with the next ACI upgrade administered from the APIC. Alternatively, the BIOS and FPGA firmware can be manually upgraded as follows:</em></p>
@@ -221,10 +218,10 @@ switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
 
         <div class="post-info">
                 <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://cphannan.github.io/tags/aci">aci</a></span><span class="tag"><a href="https://cphannan.github.io/tags/guides">guides</a></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://cphannan.github.io/tags/aci">aci</a></span><span class="tag"><a href="https://cphannan.github.io/tags/nxos">nxos</a></span><span class="tag"><a href="https://cphannan.github.io/tags/guides">guides</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>800 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>796 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-03-04</p>
         </div>
