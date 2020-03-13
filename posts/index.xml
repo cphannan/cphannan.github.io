@@ -5,18 +5,55 @@
         <description>Recent content in Posts on Christopher Hannan</description>
         <generator>Hugo -- gohugo.io</generator>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://cphannan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Cisco ACI - Leaf Switch Replacement</title>
             <link>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</link>
-            <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+            <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
             
             <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</guid>
-            <description>Work in progress&amp;hellip;</description>
-            <content type="html"><![CDATA[<p>Work in progress&hellip;</p>
-]]></content>
+            <description>Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
+ Leaf Switch Replacement Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.</description>
+            <content type="html"><![CDATA[<blockquote>
+<p><strong><em>Note:</em></strong> <em>Before following any of the steps below, please take note of the <strong>POD ID</strong>, <strong>Node ID</strong> and <strong>Node Name</strong> of the switch to be replaced. When you unbox the new switch, also note down the <strong>serial number</strong> of the new switch.</em></p>
+</blockquote>
+<h1 id="leaf-switch-replacement">Leaf Switch Replacement</h1>
+<p>Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in <a href="/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/">Cisco ACI - Converting NX-OS to ACI Boot Mode</a> to convert the switch to ACI mode.</p>
+<h2 id="1-decommission-the-faulty-switch-and-remove-it-from-the-controller">1. Decommission the faulty switch and remove it from the controller</h2>
+<ol>
+<li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Fabric Membership</strong>, identify the switch to be replaced.</li>
+<li>Right click on the switch to be replaced and select <strong>Decommission</strong>. The status will show as decommissioned.</li>
+<li>Right click on the decommissioned switch and select <strong>Remove from Controller</strong>. The status will show as decommissioning and this process can take up to 10 minutes.</li>
+</ol>
+<h2 id="2-commission-the-new-switch">2. Commission the new switch</h2>
+<blockquote>
+<p><strong><em>Note:</em></strong> <em>Make sure that the new leaf switch is connected to all of the spine switches in the fabric.</em></p>
+</blockquote>
+<ol>
+<li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Fabric Membership &gt; Nodes Pending Registration</strong> and look for a new switch that doesn&rsquo;t have an IP address or node ID assigned. Confirm it is the new switch by verifying that the serial number matches what you noted earlier.</li>
+<li>Right click on the new switch to and select <strong>Register</strong>. Configure the <strong>POD ID</strong>, <strong>Node ID</strong> and <strong>Node Name</strong>. Click <strong>Register</strong>. The status will go from unknown to discovered and the APIC will assign it an IP address and add it to the Registered Nodes tab.</li>
+<li>On the <strong>Registered Nodes</strong> tab, right click on the new switch and select <strong>Commission</strong>. The status will go to active.</li>
+</ol>
+<h2 id="3-verify-the-new-switch-status">3. Verify the new switch status</h2>
+<ol>
+<li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Topology</strong> to verify that the new switch is now part of the topology.</li>
+<li><strong>SSH</strong> to the <strong>APIC</strong> and run the command <code>acidiag fnvread</code> to confirm that the new switch shows up as &ldquo;active&rdquo;.</li>
+</ol>
+<h2 id="4-updating-your-_known_hosts_-file-on-the-apic">4. Updating your <em>known_hosts</em> file on the APIC</h2>
+<p>If you try to SSH to the new leaf switch from the APIC and you have connected to the faulty leaf switch previously via SSH, permission will be denied and you will be presented with warnings about <strong>&ldquo;POSSIBLE DNS SPOOFING&rdquo;</strong> and <strong>&ldquo;REMOTE HOST IDENTIFICATION HAS CHANGED&rdquo;</strong>.</p>
+<p>This is because the RSA host key has changed for the replacement leaf switch and does not match the RSA host key in <em>known_hosts</em>. To fix this you need to remove the RSA host key from your <em>known_hosts</em> file on the APIC as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apic1# bash
+cph-local@apic1:~&gt; ssh-keygen -R &lt;leaf-switch-hostname&gt;
+<span class="c1"># Host &lt;leaf-switch-hostname&gt; found: line 2</span>
+/home/cph-local/.ssh/known_hosts updated.
+Original contents retained as /home/cph-local/.ssh/known_hosts.old
+cph-local@apic1:~&gt; <span class="nb">exit</span>
+<span class="nb">exit</span>
+apic1# ssh &lt;leaf-switch-hostname&gt;
+Warning: Permanently added <span class="s1">&#39;&lt;leaf-switch-hostname&gt;,100.64.64.64&#39;</span> <span class="o">(</span>RSA<span class="o">)</span> to the list of known hosts.
+</code></pre></div>]]></content>
         </item>
         
         <item>
@@ -94,7 +131,7 @@ switch(config-if)# ip address &lt;ip-address/length&gt;
     Fabric discovery in progress, show commands are not fully functional
     Logout and Login after discovery to continue to use show commands.
 *****************************************************************************
-</code></pre><p>You can now log in to ACI and follow the steps documented in <a href="/posts/2020/03/cisco-aci-leaf-switch-replacement/">ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
+</code></pre><p>You can now log in to the APIC and follow the steps documented in <a href="/posts/2020/03/cisco-aci-leaf-switch-replacement/">Cisco ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
 <hr>
 <blockquote>
 <p><strong><em>Note:</em></strong> <em>When commissioned, the new switch may show a degraded health and list faults for a firmware version mismatch of both the BIOS and FPGA firmware. This is because a conversion to ACI basically just boots the switch into the ACI image and, since no install scripts are acting on the box, all the auxiliary steps (that would be performed during a normal upgrade) are not done.</em></p>

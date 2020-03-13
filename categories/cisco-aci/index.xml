@@ -6,7 +6,7 @@
     <description>Recent content in Cisco ACI on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cphannan.github.io/categories/cisco-aci/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,11 @@
     <item>
       <title>Cisco ACI - Leaf Switch Replacement</title>
       <link>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</link>
-      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</guid>
-      <description>Work in progress&amp;hellip;</description>
+      <description>Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
+ Leaf Switch Replacement Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.</description>
     </item>
     
     <item>
