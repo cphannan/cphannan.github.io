@@ -18,7 +18,7 @@
       
       <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</guid>
       <description>Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
- Leaf Switch Replacement Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.</description>
+ Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.</description>
     </item>
     
     <item>
@@ -27,18 +27,9 @@
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</guid>
-      <description>Converting NX-OS to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:</description>
-    </item>
-    
-    <item>
-      <title>Cisco ACI - Basic Commands</title>
-      <link>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</link>
-      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://cphannan.github.io/posts/2020/02/cisco-aci-basic-commands/</guid>
-      <description>General Overview acidiag fnvread Displays the address and state of switch nodes registered with the fabric.
-Moquery Usage moquery --help usage: Command line cousin to visore [-h] [-i HOST] [-p PORT] [-d DN] [-c KLASS] [-f FILTER] [-a ATTRS] [-o OUTPUT] [-u USER] [-x [OPTIONS [OPTIONS ...]]] optional arguments: -h, --help show this help message and exit -i HOST, --host HOST Hostname or ip of apic -p PORT, --port PORT REST server port -d DN, --dn DN dn of the mo -c KLASS, --klass KLASS comma seperated class names to query -f FILTER, --filter FILTER property filter to accept/reject mos -a ATTRS, --attrs ATTRS type of attributes to display (config, all) -o OUTPUT, --output OUTPUT Display format (block, table, xml, json) -u USER, --user USER User name -x [OPTIONS [OPTIONS .</description>
+      <description>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
+switch# show version 2. Uploading the ACI image The ACI image can be copied to the switch directly via USB or via SCP from the APIC or an SCP server.</description>
     </item>
     
   </channel>

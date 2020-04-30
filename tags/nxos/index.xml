@@ -17,8 +17,9 @@
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</guid>
-      <description>Converting NX-OS to ACI Boot Mode Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:</description>
+      <description>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
+1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
+switch# show version 2. Uploading the ACI image The ACI image can be copied to the switch directly via USB or via SCP from the APIC or an SCP server.</description>
     </item>
     
   </channel>

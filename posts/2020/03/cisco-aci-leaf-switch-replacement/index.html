@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Christopher Hannan">
 <meta name="description" content="Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
- Leaf Switch Replacement Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode." />
+ Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode." />
 <meta name="keywords" content="blog,networking,automation,personal, aci, guides" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
@@ -33,10 +33,10 @@
 
 <meta itemprop="name" content="Cisco ACI - Leaf Switch Replacement">
 <meta itemprop="description" content="Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
- Leaf Switch Replacement Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.">
+ Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.">
 <meta itemprop="datePublished" content="2020-03-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="489">
+<meta itemprop="wordCount" content="486">
 <meta itemprop="image" content="https://cphannan.github.io/avatar.png"/>
 
 
@@ -46,7 +46,7 @@
 
 <meta name="twitter:title" content="Cisco ACI - Leaf Switch Replacement"/>
 <meta name="twitter:description" content="Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
- Leaf Switch Replacement Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode."/>
+ Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode."/>
 
 
 
@@ -133,7 +133,6 @@
                 <blockquote>
 <p><strong><em>Note:</em></strong> <em>Before following any of the steps below, please take note of the <strong>POD ID</strong>, <strong>Node ID</strong> and <strong>Node Name</strong> of the switch to be replaced. When you unbox the new switch, also note down the <strong>serial number</strong> of the new switch.</em></p>
 </blockquote>
-<h1 id="leaf-switch-replacement">Leaf Switch Replacement</h1>
 <p>Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in <a href="https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/">Cisco ACI - Converting NX-OS to ACI Boot Mode</a> to convert the switch to ACI mode.</p>
 <h2 id="1-decommission-the-faulty-switch-and-remove-it-from-the-controller">1. Decommission the faulty switch and remove it from the controller</h2>
 <ol>
@@ -155,8 +154,8 @@
 <li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Topology</strong> to verify that the new switch is now part of the topology.</li>
 <li><strong>SSH</strong> to the <strong>APIC</strong> and run the command <code>acidiag fnvread</code> to confirm that the new switch shows up as &ldquo;active&rdquo;.</li>
 </ol>
-<h2 id="4-updating-your-_known_hosts_-file-on-the-apic">4. Updating your <em>known_hosts</em> file on the APIC</h2>
-<p>If you try to SSH to the new leaf switch from the APIC and you have connected to the faulty leaf switch previously via SSH, permission will be denied and you will be presented with warnings about <strong>&ldquo;POSSIBLE DNS SPOOFING&rdquo;</strong> and <strong>&ldquo;REMOTE HOST IDENTIFICATION HAS CHANGED&rdquo;</strong>.</p>
+<h2 id="4-updating-your-known_hosts-file-on-the-apic">4. Updating your known_hosts file on the APIC</h2>
+<p>If you try to SSH to the new leaf switch from the APIC and you have connected to the faulty leaf switch previously via SSH, permission will be denied and you will be presented with warnings about <strong><em>&ldquo;POSSIBLE DNS SPOOFING&rdquo;</em></strong> and <strong><em>&ldquo;REMOTE HOST IDENTIFICATION HAS CHANGED&rdquo;</em></strong>.</p>
 <p>This is because the RSA host key has changed for the replacement leaf switch and does not match the RSA host key in <em>known_hosts</em>. To fix this you need to remove the RSA host key from your <em>known_hosts</em> file on the APIC as follows:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apic1# bash
 cph-local@apic1:~&gt; ssh-keygen -R &lt;leaf-switch-hostname&gt;
@@ -178,7 +177,7 @@ Warning: Permanently added <span class="s1">&#39;&lt;leaf-switch-hostname&gt;,10
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://cphannan.github.io/tags/aci">aci</a></span><span class="tag"><a href="https://cphannan.github.io/tags/guides">guides</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>489 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>486 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-03-12</p>
         </div>
