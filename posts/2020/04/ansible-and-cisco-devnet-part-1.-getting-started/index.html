@@ -1,33 +1,136 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Posts on Christopher Hannan</title>
-        <link>https://cphannan.github.io/posts/</link>
-        <description>Recent content in Posts on Christopher Hannan</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Fri, 01 May 2020 00:00:00 +0000</lastBuildDate>
-        <atom:link href="https://cphannan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Christopher Hannan">
+<meta name="description" content="Table of Contents  Objectives Prerequisites Guide Next Steps  Objectives  Install and verify the default Ansible settings Create a new Ansible environment  Prerequisites  Note: This guide assumes that you already have a control node that can run Ansible, with Python installed and access to the internet.
+ Guide Step 1: Install Ansible Listed below are the installation steps for both Ubuntu and macOS. For other distributions, please follow Ansible&amp;rsquo;s Installation Guide." />
+<meta name="keywords" content="blog,networking,automation,personal, ansible, guides, cisco devnet" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://cphannan.github.io/posts/2020/04/ansible-and-cisco-devnet-part-1.-getting-started/" />
+
+
+    <title>
         
-        <item>
-            <title>Ansible and Cisco DevNet: Part 2. Playbooks and Git</title>
-            <link>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/</link>
-            <pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/</guid>
-            <description>W.I.P&amp;hellip;</description>
-            <content type="html"><![CDATA[<p>W.I.P&hellip;</p>
-]]></content>
-        </item>
+            Ansible and Cisco DevNet: Part 1. Getting Started :: Christopher Hannan 
         
-        <item>
-            <title>Ansible and Cisco DevNet: Part 1. Getting Started</title>
-            <link>https://cphannan.github.io/posts/2020/04/ansible-and-cisco-devnet-part-1.-getting-started/</link>
-            <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://cphannan.github.io/main.min.7bfbbe12786fa0ded4b4c0d792cbb36a5bd0bdb0b856dde57aa7b1f6fe0f2b87.css">
+
+
+
+
+<meta itemprop="name" content="Ansible and Cisco DevNet: Part 1. Getting Started">
+<meta itemprop="description" content="Table of Contents  Objectives Prerequisites Guide Next Steps  Objectives  Install and verify the default Ansible settings Create a new Ansible environment  Prerequisites  Note: This guide assumes that you already have a control node that can run Ansible, with Python installed and access to the internet.
+ Guide Step 1: Install Ansible Listed below are the installation steps for both Ubuntu and macOS. For other distributions, please follow Ansible&rsquo;s Installation Guide.">
+<meta itemprop="datePublished" content="2020-04-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="824">
+<meta itemprop="image" content="https://cphannan.github.io/avatar.png"/>
+
+
+
+<meta itemprop="keywords" content="ansible,guides,cisco devnet," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cphannan.github.io/avatar.png"/>
+
+<meta name="twitter:title" content="Ansible and Cisco DevNet: Part 1. Getting Started"/>
+<meta name="twitter:description" content="Table of Contents  Objectives Prerequisites Guide Next Steps  Objectives  Install and verify the default Ansible settings Create a new Ansible environment  Prerequisites  Note: This guide assumes that you already have a control node that can run Ansible, with Python installed and access to the internet.
+ Guide Step 1: Install Ansible Listed below are the installation steps for both Ubuntu and macOS. For other distributions, please follow Ansible&rsquo;s Installation Guide."/>
+
+
+
+    <meta property="article:section" content="Network Automation" />
+
+
+
+    <meta property="article:published_time" content="2020-04-18 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://cphannan.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
             
-            <guid>https://cphannan.github.io/posts/2020/04/ansible-and-cisco-devnet-part-1.-getting-started/</guid>
-            <description>Table of Contents  Objectives Prerequisites Guide Next Steps  Objectives  Install and verify the default Ansible settings Create a new Ansible environment  Prerequisites  Note: This guide assumes that you already have a control node that can run Ansible, with Python installed and access to the internet.
- Guide Step 1: Install Ansible Listed below are the installation steps for both Ubuntu and macOS. For other distributions, please follow Ansible&amp;rsquo;s Installation Guide.</description>
-            <content type="html"><![CDATA[<h2 id="table-of-contents">Table of Contents</h2>
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://cphannan.github.io/posts/">Posts</a></li><li><a href="https://cphannan.github.io/categories/">Categories</a></li><li><a href="https://cphannan.github.io/tags">Tags</a></li><li><a href="https://cphannan.github.io/about/">About</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://cphannan.github.io/posts/2020/04/ansible-and-cisco-devnet-part-1.-getting-started/">Ansible and Cisco DevNet: Part 1. Getting Started</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#objectives">Objectives</a></li>
 <li><a href="#prerequisites">Prerequisites</a></li>
@@ -223,151 +326,102 @@ cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/sandboxapicdc.cisco.co
                     <span class="na">sbx-nxos-mgmt.cisco.com.yml</span>
 </code></pre></div><h2 id="next-steps">Next Steps</h2>
 <p>We now have a solid Ansible directory structure, with the Cisco DevNet sandboxes for multiple OS types defined in a dedicated development inventory.</p>
-<p><a href="/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/">Part 2</a> of this guide will cover:</p>
+<p><a href="https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/">Part 2</a> of this guide will cover:</p>
 <ul>
 <li>Creating a simple playbook to retrieve information from those sandboxes.</li>
 <li>Initializing a Git repository within the Ansible directory to create a &ldquo;master&rdquo; copy of our code and use branches to safely develop and test new code in.</li>
 </ul>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Cisco ACI - Leaf Switch Replacement</title>
-            <link>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</link>
-            <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</guid>
-            <description>Note: Before following any of the steps below, please take note of the POD ID, Node ID and Node Name of the switch to be replaced. When you unbox the new switch, also note down the serial number of the new switch.
- Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in Cisco ACI - Converting NX-OS to ACI Boot Mode to convert the switch to ACI mode.</description>
-            <content type="html"><![CDATA[<blockquote>
-<p><strong><em>Note:</em></strong> <em>Before following any of the steps below, please take note of the <strong>POD ID</strong>, <strong>Node ID</strong> and <strong>Node Name</strong> of the switch to be replaced. When you unbox the new switch, also note down the <strong>serial number</strong> of the new switch.</em></p>
-</blockquote>
-<p>Power on the new switch and connect a console cable to check if it is running in ACI mode or NX-OS mode. If it is running in NX-OS mode, follow the steps documented in <a href="/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/">Cisco ACI - Converting NX-OS to ACI Boot Mode</a> to convert the switch to ACI mode.</p>
-<h2 id="1-decommission-the-faulty-switch-and-remove-it-from-the-controller">1. Decommission the faulty switch and remove it from the controller</h2>
-<ol>
-<li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Fabric Membership</strong>, identify the switch to be replaced.</li>
-<li>Right click on the switch to be replaced and select <strong>Decommission</strong>. The status will show as decommissioned.</li>
-<li>Right click on the decommissioned switch and select <strong>Remove from Controller</strong>. The status will show as decommissioning and this process can take up to 10 minutes.</li>
-</ol>
-<h2 id="2-commission-the-new-switch">2. Commission the new switch</h2>
-<blockquote>
-<p><strong><em>Note:</em></strong> <em>Make sure that the new leaf switch is connected to all of the spine switches in the fabric.</em></p>
-</blockquote>
-<ol>
-<li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Fabric Membership &gt; Nodes Pending Registration</strong> and look for a new switch that doesn&rsquo;t have an IP address or node ID assigned. Confirm it is the new switch by verifying that the serial number matches what you noted earlier.</li>
-<li>Right click on the new switch to and select <strong>Register</strong>. Configure the <strong>POD ID</strong>, <strong>Node ID</strong> and <strong>Node Name</strong>. Click <strong>Register</strong>. The status will go from unknown to discovered and the APIC will assign it an IP address and add it to the Registered Nodes tab.</li>
-<li>On the <strong>Registered Nodes</strong> tab, right click on the new switch and select <strong>Commission</strong>. The status will go to active.</li>
-</ol>
-<h2 id="3-verify-the-new-switch-status">3. Verify the new switch status</h2>
-<ol>
-<li>In the <strong>ACI GUI</strong>, navigate to <strong>Fabric &gt; Inventory &gt; Topology</strong> to verify that the new switch is now part of the topology.</li>
-<li><strong>SSH</strong> to the <strong>APIC</strong> and run the command <code>acidiag fnvread</code> to confirm that the new switch shows up as &ldquo;active&rdquo;.</li>
-</ol>
-<h2 id="4-updating-your-known_hosts-file-on-the-apic">4. Updating your known_hosts file on the APIC</h2>
-<p>If you try to SSH to the new leaf switch from the APIC and you have connected to the faulty leaf switch previously via SSH, permission will be denied and you will be presented with warnings about <strong><em>&ldquo;POSSIBLE DNS SPOOFING&rdquo;</em></strong> and <strong><em>&ldquo;REMOTE HOST IDENTIFICATION HAS CHANGED&rdquo;</em></strong>.</p>
-<p>This is because the RSA host key has changed for the replacement leaf switch and does not match the RSA host key in <em>known_hosts</em>. To fix this you need to remove the RSA host key from your <em>known_hosts</em> file on the APIC as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apic1# bash
-cph-local@apic1:~&gt; ssh-keygen -R &lt;leaf-switch-hostname&gt;
-<span class="c1"># Host &lt;leaf-switch-hostname&gt; found: line 2</span>
-/home/cph-local/.ssh/known_hosts updated.
-Original contents retained as /home/cph-local/.ssh/known_hosts.old
-cph-local@apic1:~&gt; <span class="nb">exit</span>
-<span class="nb">exit</span>
-apic1# ssh &lt;leaf-switch-hostname&gt;
-Warning: Permanently added <span class="s1">&#39;&lt;leaf-switch-hostname&gt;,100.64.64.64&#39;</span> <span class="o">(</span>RSA<span class="o">)</span> to the list of known hosts.
-</code></pre></div>]]></content>
-        </item>
-        
-        <item>
-            <title>Cisco ACI - Converting NX-OS to ACI Boot Mode</title>
-            <link>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</link>
-            <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://cphannan.github.io/posts/2020/03/cisco-aci-converting-nx-os-to-aci-boot-mode/</guid>
-            <description>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.
-1. Verify which mode the switch is running (ACI or NX-OS) Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &amp;ldquo;n9000&amp;rdquo; while ACI filenames begin with &amp;ldquo;aci-n9000&amp;rdquo;:
-switch# show version 2. Uploading the ACI image The ACI image can be copied to the switch directly via USB or via SCP from the APIC or an SCP server.</description>
-            <content type="html"><![CDATA[<p>Follow the steps below to convert a Cisco Nexus 9000 Series switch from NX-OS standalone mode to ACI boot mode.</p>
-<h2 id="1-verify-which-mode-the-switch-is-running-aci-or-nx-os">1. Verify which mode the switch is running (ACI or NX-OS)</h2>
-<p>Power on the new switch and connect a console to check if it is running in ACI mode or NX-OS mode. Cisco NX-OS filenames begin with &ldquo;n9000&rdquo; while ACI filenames begin with &ldquo;aci-n9000&rdquo;:</p>
-<pre><code>switch# show version
-</code></pre><h2 id="2-uploading-the-aci-image">2. Uploading the ACI image</h2>
-<p>The ACI image can be copied to the switch directly via USB or via SCP from the APIC or an SCP server.</p>
-<h4 id="method-1-using-usb">Method 1: Using USB</h4>
-<h5 id="copy-the-image-from-the-usb-drive-to-bootflash">Copy the image from the USB drive to bootflash:</h5>
-<pre><code>switch# dir usb1:
-switch# copy usb1:&lt;aci-image.bin&gt; bootflash:
-</code></pre><h4 id="method-2-using-scp-from-the-apic">Method 2: Using SCP from the APIC</h4>
-<h5 id="configure-management-connectivity-to-the-apic">Configure management connectivity to the APIC:</h5>
-<p>From the <strong>APIC CLI</strong>, view the ACI Out-of-band information and find a spare IP in the management network to use on the new switch:</p>
-<pre><code>apic1# show oob-mgmt
-</code></pre><p>Set the IP address on the mgmt0 interface of the new switch to allow management connectivity between the new switch and the APIC:</p>
-<p><strong>Example:</strong></p>
-<pre><code>switch(config)# interface mgmt0
 
-switch(config-if)# ip address &lt;ip-address/length&gt;
-</code></pre><p>Patch interface mgmt0 on the new switch into the management network. Confirm connectivity from the new switch to the APIC:</p>
-<pre><code>switch# ping &lt;apic-ip-address&gt;
-</code></pre><h5 id="copy-the-aci-image-from-the-apic-to-the-switch">Copy the ACI image from the APIC to the switch:</h5>
-<p>Enable SCP services on the switch:</p>
-<pre><code>switch(config)# feature scp-server
-</code></pre><p>From the <strong>APIC CLI</strong>, view and take note of the currently installed leaf/spine switch firmware versions:</p>
-<pre><code>apic1# show versions
-</code></pre><p>View the firmware images present in the APIC repository and find the &ldquo;aci&rdquo; version of the above switch firmware. Take note of the MD5 checksum:</p>
-<pre><code>apic1# show firmware repository detail
-</code></pre><p>Use <strong>SCP</strong> to copy the firmware image from the APIC repository to the active supervisor module on the switch:</p>
-<pre><code>apic1# scp -r /firmware/fwrepos/fwrepo/&lt;aci-image.bin&gt; admin@&lt;switch-ip-address&gt;:&lt;aci-image.bin&gt;
-</code></pre><hr>
-<blockquote>
-<p><strong><em>Note:</em></strong> <em>For dual-supervisor systems, copy the ACI image from the active to the standby supervisor module.
-<strong>Example:</strong> <code>switch(config)# copy bootflash:&lt;aci-image.bin&gt; bootflash://sup-standby/</code></em></p>
-</blockquote>
-<hr>
-<h2 id="3-boot-the-switch-to-the-aci-image">3. Boot the switch to the ACI image</h2>
-<p>Configure the switch to not boot from Cisco NX-OS:</p>
-<pre><code>switch(config)# no boot nxos
-</code></pre><p>Save the configuration:</p>
-<pre><code>switch(config)# copy running-config startup-config
-</code></pre><blockquote>
-<p><strong><em>Note:</em></strong> <em>You must run the copy running-config startup-config command prior to booting the ACI image. Do not run it after you enter the boot aci command.</em></p>
-</blockquote>
-<p>Boot the switch with the ACI image:</p>
-<pre><code>switch(config)# boot aci bootflash:&lt;aci-image.bin&gt;
-</code></pre><blockquote>
-<p><strong><em>Caution:</em></strong> <em>Do not enter the copy running-config startup-config command after the boot aci command. If you do, the switch will go to the loader&gt; prompt.</em></p>
-</blockquote>
-<p>Verify the integrity of the file by displaying the MD5 checksum and comparing it to that noted in Step 3:</p>
-<pre><code>switch(config)# show file bootflash:&lt;aci-image.bin&gt; md5sum
-</code></pre><p>Check the output of the <strong>show boot</strong> command to see if the bootvar is correctly set:</p>
-<pre><code>switch# show boot
-</code></pre><p>Reload the switch:</p>
-<pre><code>switch# reload
-</code></pre><blockquote>
-<p><strong><em>Note:</em></strong> <em>This reload and conversion can take up to 30 minutes to complete.</em></p>
-</blockquote>
-<p>Log in to the switch as an administrator to verify it is now running in ACI mode. Notice that the fabric discovery process has been started at this point. It may be some minutes before the services start and we are able to access the switch via the console.:</p>
-<p><strong>Example:</strong></p>
-<pre><code>User Access Verification
-(none) login: admin
-*****************************************************************************
-    Fabric discovery in progress, show commands are not fully functional
-    Logout and Login after discovery to continue to use show commands.
-*****************************************************************************
-</code></pre><p>You can now log in to the APIC and follow the steps documented in <a href="/posts/2020/03/cisco-aci-leaf-switch-replacement/">Cisco ACI - Leaf Switch Replacement</a> to register and commission the new switch in the ACI Fabric.</p>
-<hr>
-<blockquote>
-<p><strong><em>Note:</em></strong> <em>When commissioned, the new switch may show a degraded health and list faults for a firmware version mismatch of both the BIOS and FPGA firmware. This is because a conversion to ACI basically just boots the switch into the ACI image and, since no install scripts are acting on the box, all the auxiliary steps (that would be performed during a normal upgrade) are not done.</em></p>
-<p><em>Normally these faults do not pose an issue and the BIOS and FPGA will be upgraded with the next ACI upgrade administered from the APIC. Alternatively, the BIOS and FPGA firmware can be manually upgraded as follows:</em></p>
-<p><strong>FPGA Upgrade (requires a reload)</strong>
-<code>/bin/check-fpga.sh FpGaDoWnGrAdE</code>
-<code>/usr/sbin/chassis-power-cycle.sh</code></p>
-<p><strong>BIOS Upgrade (requires Cisco TAC)</strong>
-<em>For the manual upgrade of the BIOS you will need to raise a service request with Cisco so that one of their TAC engineers can assist via a Webex session. There&rsquo;s an enhancement filed to improve this to make the upgrade automatic, however, it&rsquo;s not implemented yet (CSCvm40571).</em></p>
-<p><strong>Workaround</strong>
-<em>Another option to address this issue is to convert the new switch to an ACI firmware version that is N -1. The switch can then be added to the Fabric and auto-upgraded from the APIC to the correct ACI, BIOS and FPGA versions.</em></p>
-</blockquote>
-]]></content>
-        </item>
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://cphannan.github.io/tags/ansible">ansible</a></span><span class="tag"><a href="https://cphannan.github.io/tags/guides">guides</a></span><span class="tag"><a href="https://cphannan.github.io/tags/cisco-devnet">cisco devnet</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>824 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-17</p>
+        </div>
+
         
-    </channel>
-</rss>
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Ansible and Cisco DevNet: Part 2. Playbooks and Git</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/">
+                                <span class="button__text">Cisco ACI - Leaf Switch Replacement</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+
+        
+          <div id="comments" class="thin">
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://cphannan.github.io/">Christopher Hannan</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://cphannan.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://cphannan.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-158718549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    </body>
+</html>

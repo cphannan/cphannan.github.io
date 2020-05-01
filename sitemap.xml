@@ -3,17 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://cphannan.github.io/tags/aci/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
+    <loc>https://cphannan.github.io/tags/ansible/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://cphannan.github.io/categories/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://cphannan.github.io/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/tags/cisco-devnet/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/tags/git/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/tags/guides/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/categories/network-automation/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/posts/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/tags/</loc>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/posts/2020/04/ansible-and-cisco-devnet-part-1.-getting-started/</loc>
+    <lastmod>2020-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cphannan.github.io/tags/aci/</loc>
     <lastmod>2020-03-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -24,21 +69,6 @@
   
   <url>
     <loc>https://cphannan.github.io/posts/2020/03/cisco-aci-leaf-switch-replacement/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/tags/guides/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/posts/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cphannan.github.io/tags/</loc>
     <lastmod>2020-03-13T00:00:00+00:00</lastmod>
   </url>
   
