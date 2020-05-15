@@ -36,7 +36,7 @@
  Guide Step 1: Install Ansible Listed below are the installation steps for both Ubuntu and macOS. For other distributions, please follow Ansible&rsquo;s Installation Guide.">
 <meta itemprop="datePublished" content="2020-04-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="824">
+<meta itemprop="wordCount" content="871">
 <meta itemprop="image" content="https://cphannan.github.io/avatar.png"/>
 
 
@@ -115,7 +115,7 @@
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
 
             
 
@@ -200,7 +200,7 @@ ansible 2.8.6
 </blockquote>
 <p>In the next steps we will create a new directory for the Ansible environment and then create a custom <strong>ansible.cfg</strong> file that will override the defaults above.</p>
 <h3 id="step-3-build-the-base-directory-layout">Step 3: Build the base directory layout</h3>
-<p>This guide will just focus on populating the <strong>dev/</strong> inventory but the Ansible environment we create follows one of <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" title="Ansible's Best Practices">Ansible&rsquo;s best practice</a> directory layouts. A separate directory for our production and development inventories, each with their own respective group and host var files.</p>
+<p>This guide will just focus on populating the <strong>dev/</strong> inventory but the Ansible directory we create follows the alternative layout from Ansible&rsquo;s <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" title="Ansible Best Practices">best practice</a> for directory layouts. We will have a separate directory for our production and development inventories, each with their own respective group and host var files.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~$ mkdir netauto
 cphannan@ubuntu:~$ <span class="nb">cd</span> netauto
 cphannan@ubuntu:~/netauto$
@@ -209,7 +209,7 @@ cphannan@ubuntu:~/netauto$ mkdir inventories/dev
 cphannan@ubuntu:~/netauto$ mkdir inventories/dev/group_vars
 cphannan@ubuntu:~/netauto$ mkdir inventories/dev/host_vars
 cphannan@ubuntu:~/netauto$ mkdir roles
-</code></pre></div><h3 id="step-4-edit-the-new-_ansiblecfg_-file">Step 4: Edit the new <em>ansible.cfg</em> file</h3>
+</code></pre></div><h3 id="step-4-create-a-custom-ansiblecfg-file">Step 4: Create a custom ansible.cfg file</h3>
 <p>Use <code>nano</code> to create the new <strong>ansible.cfg</strong> file and paste in the below parameters:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ nano ansible.cfg
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[defaults]</span>
@@ -223,7 +223,7 @@ cphannan@ubuntu:~/netauto$ mkdir roles
 <span class="na">connect_timeout</span> <span class="o">=</span> <span class="s">60</span>
 <span class="na">command_timeout</span> <span class="o">=</span> <span class="s">60</span>
 </code></pre></div><h3 id="step-5-add-the-cisco-devnet-sandboxes-to-the-dev-inventory">Step 5: Add the Cisco DevNet sandboxes to the dev/ inventory</h3>
-<p><a href="https://developer.cisco.com/site/sandbox/" title="Cisco DevNet">Cisco DevNet</a> have always-on sandboxes for Cisco IOS, IOS-XR, NX-OS and ACI which we will add to the <strong>dev/</strong> inventory. Providing your control node can access the devices via SSH, you could add your own lab equipment (virtual or physical) to the same inventory for testing network automation against.</p>
+<p><a href="https://developer.cisco.com/site/sandbox/" title="Cisco DevNet">Cisco DevNet</a> have always-on sandboxes for Cisco IOS, IOS-XR, NX-OS and ACI which we will add to the <strong>dev/</strong> inventory. Providing our control node can access the devices via SSH, we could add our own lab equipment (virtual or physical) to the same inventory for testing network automation against.</p>
 <p>In the example below, the <strong>dev/</strong> inventory file defines the groups <code>ios</code>, <code>iosxr</code>, <code>nxos</code>, <code>aci</code> and a &ldquo;group of groups&rdquo; called <code>always_on</code>.</p>
 <p>Use <code>nano</code> to create the new <strong>hosts</strong> file in <strong>inventories/dev/</strong>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ nano inventories/dev/hosts
@@ -272,6 +272,9 @@ cphannan@ubuntu:~/netauto$ mkdir roles
 </span><span class="w"></span><span class="k">ansible_network_os</span><span class="p">:</span><span class="w"> </span>aci<span class="w">
 </span></code></pre></div><h3 id="step-7-populate-the-host-variables-for-the-dev-inventory">Step 7: Populate the host variables for the dev/ inventory</h3>
 <p>Host variables are used to assign variables to a single host. As each Cisco DevNet sandbox has its own specific connection parameters and login details, we will create host specific folders and variable files for each of the sandboxes.</p>
+<blockquote>
+<p><strong>Note:</strong> The credentials for the Cisco DevNet sandboxes are publicly available so for simplicity we will store the host variables below in plaintext. If this was our production environment we could encrypt the credential variables at rest using Ansible&rsquo;s <a href="https://docs.ansible.com/ansible/latest/user_guide/vault.html" title="Ansible Vault">Vault</a> feature.</p>
+</blockquote>
 <p><strong>For the IOS host:</strong></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ mkdir inventories/dev/host_vars/ios-xe-mgmt.cisco.com
 cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/ios-xe-mgmt.cisco.com/ios-xe-mgmt.cisco.com.yml
@@ -342,7 +345,7 @@ cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/sandboxapicdc.cisco.co
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://cphannan.github.io/tags/ansible">ansible</a></span><span class="tag"><a href="https://cphannan.github.io/tags/guides">guides</a></span><span class="tag"><a href="https://cphannan.github.io/tags/cisco-devnet">cisco devnet</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>824 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>871 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-17</p>
         </div>
