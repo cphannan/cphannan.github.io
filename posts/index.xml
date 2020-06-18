@@ -9,11 +9,11 @@
         <atom:link href="https://cphannan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Ansible and Cisco DevNet: Part 2. Playbooks and Git</title>
-            <link>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/</link>
+            <title>Ansible and Cisco DevNet: Part 2. Writing a simple playbook</title>
+            <link>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/</link>
             <pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate>
             
-            <guid>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/</guid>
+            <guid>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/</guid>
             <description>W.I.P&amp;hellip;</description>
             <content type="html"><![CDATA[<p>W.I.P&hellip;</p>
 ]]></content>
@@ -125,22 +125,25 @@ cphannan@ubuntu:~/netauto$ mkdir roles
 <p>Use <code>nano</code> to create the new <strong>hosts</strong> file in <strong>inventories/dev/</strong>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ nano inventories/dev/hosts
 </code></pre></div><p>Paste in the below information for the Cisco DevNet hosts:</p>
-<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[ios]</span>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[always_on]</span>
+<span class="na">ios-xe-mgmt.cisco.com</span>
+<span class="na">sbx-iosxr-mgmt.cisco.com</span>
+<span class="na">sbx-nxos-mgmt.cisco.com</span>
+
+
+<span class="k">[ios]</span>
 <span class="na">ios-xe-mgmt.cisco.com ansible_host</span><span class="o">=</span><span class="s">64.103.37.51</span>
+
 
 <span class="k">[iosxr]</span>
 <span class="na">sbx-iosxr-mgmt.cisco.com ansible_host</span><span class="o">=</span><span class="s">64.103.37.3</span>
 
+
 <span class="k">[nxos]</span>
 <span class="na">sbx-nxos-mgmt.cisco.com ansible_host</span><span class="o">=</span><span class="s">64.103.37.14</span>
 
-<span class="k">[aci]</span>
-<span class="na">sandboxapicdc.cisco.com</span>
 
-<span class="k">[always_on]</span>
-<span class="na">ios-xe-mgmt.cisco.com</span>
-<span class="na">sbx-iosxr-mgmt.cisco.com</span>
-<span class="na">sbx-nxos-mgmt.cisco.com</span>
+<span class="k">[aci]</span>
 <span class="na">sandboxapicdc.cisco.com</span>
 </code></pre></div><h3 id="step-6-populate-the-group-variables-for-the-dev-inventory">Step 6: Populate the group variables for the dev/ inventory</h3>
 <p>Group variables are used to apply shared variables to hosts in the same inventory group. Create the new &ldquo;group_var&rdquo; files and paste in the parameters.</p>
@@ -170,7 +173,7 @@ cphannan@ubuntu:~/netauto$ mkdir roles
 </span></code></pre></div><h3 id="step-7-populate-the-host-variables-for-the-dev-inventory">Step 7: Populate the host variables for the dev/ inventory</h3>
 <p>Host variables are used to assign variables to a single host. As each Cisco DevNet sandbox has its own specific connection parameters and login details, we will create host specific folders and variable files for each of the sandboxes.</p>
 <blockquote>
-<p><strong>Note:</strong> The credentials for the Cisco DevNet sandboxes are publicly available so for simplicity we will store the host variables below in plaintext. If this was our production environment we could encrypt the credential variables at rest using Ansible&rsquo;s <a href="https://docs.ansible.com/ansible/latest/user_guide/vault.html" title="Ansible Vault">Vault</a> feature.</p>
+<p><strong>Note:</strong> These credentials for the Cisco DevNet sandboxes are publicly available so for simplicity we will store them as host variables in plaintext. If this was our production environment we could encrypt these credential variables at rest using Ansible&rsquo;s <a href="https://docs.ansible.com/ansible/latest/user_guide/vault.html" title="Ansible Vault">Vault</a> feature.</p>
 </blockquote>
 <p><strong>For the IOS host:</strong></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ mkdir inventories/dev/host_vars/ios-xe-mgmt.cisco.com
@@ -226,11 +229,7 @@ cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/sandboxapicdc.cisco.co
                     <span class="na">sbx-nxos-mgmt.cisco.com.yml</span>
 </code></pre></div><h2 id="next-steps">Next Steps</h2>
 <p>We now have a solid Ansible directory structure, with the Cisco DevNet sandboxes for multiple OS types defined in a dedicated development inventory.</p>
-<p><a href="/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/">Part 2</a> of this guide will cover:</p>
-<ul>
-<li>Creating a simple playbook to retrieve information from those sandboxes.</li>
-<li>Initializing a Git repository within the Ansible directory to create a &ldquo;master&rdquo; copy of our code and use branches to safely develop and test new code in.</li>
-</ul>
+<p><a href="/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/">Part 2</a> of this guide will cover creating a simple playbook to retrieve information from the Cisco DevNet sandboxes.</p>
 ]]></content>
         </item>
         
