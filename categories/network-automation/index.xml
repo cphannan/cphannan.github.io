@@ -6,18 +6,19 @@
     <description>Recent content in Network Automation on Christopher Hannan</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 01 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cphannan.github.io/categories/network-automation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ansible and Cisco DevNet: Part 2. Writing a simple playbook</title>
-      <link>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/</link>
-      <pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate>
+      <link>https://cphannan.github.io/posts/2020/06/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/</guid>
-      <description>W.I.P&amp;hellip;</description>
+      <guid>https://cphannan.github.io/posts/2020/06/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/</guid>
+      <description>Table of Contents  Objectives Prerequisites Guide Takeaways  Objectives  Write a simple playbook to retrieve facts from network devices Test the new playbook against Cisco&amp;rsquo;s DevNet sandboxes  An Ansible playbook is written in YAML and orchestrates the playbook &amp;lsquo;run&amp;rsquo;. The top section specifies what devices are targeted for this run and the tasks list is an ordered set of instructions to execute on each device.
+We will now write a playbook that utilises the Ansible ios_facts module, used to collect a base set of facts from Cisco IOS devices.</description>
     </item>
     
     <item>

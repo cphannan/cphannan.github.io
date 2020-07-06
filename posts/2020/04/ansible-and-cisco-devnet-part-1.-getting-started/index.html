@@ -36,7 +36,7 @@
  Guide Step 1: Install Ansible Listed below are the installation steps for both Ubuntu and macOS. For other distributions, please follow Ansible&rsquo;s Installation Guide.">
 <meta itemprop="datePublished" content="2020-04-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-04-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="845">
+<meta itemprop="wordCount" content="853">
 <meta itemprop="image" content="https://cphannan.github.io/avatar.png"/>
 
 
@@ -115,7 +115,7 @@
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
 
             
 
@@ -198,7 +198,7 @@ ansible 2.8.6
 <blockquote>
 <p><strong>Source:</strong> <a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html">https://docs.ansible.com/ansible/latest/reference_appendices/config.html</a></p>
 </blockquote>
-<p>In the next steps we will create a new directory for the Ansible environment and then create a custom <strong>ansible.cfg</strong> file that will override the defaults above.</p>
+<p>We will now create a new directory for the Ansible environment and then create a custom <strong>ansible.cfg</strong> file that will override the defaults above.</p>
 <h3 id="step-3-build-the-base-directory-layout">Step 3: Build the base directory layout</h3>
 <p>This guide will just focus on populating the <strong>dev/</strong> inventory but the Ansible directory we create follows the alternative layout from Ansible&rsquo;s <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" title="Ansible Best Practices">best practice</a> for directory layouts. We will have a separate directory for our production and development inventories, each with their own respective group and host var files.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~$ mkdir netauto
@@ -311,28 +311,31 @@ cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/sandboxapicdc.cisco.co
 </span><span class="w"></span><span class="k">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ciscopsdt&#34;</span><span class="w">
 </span></code></pre></div><h3 id="step-8-verify-the-ansible-directory-layout">Step 8: Verify the Ansible directory layout</h3>
 <p>The ansible environment&rsquo;s directory structure should now look like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">netauto/</span>
-    <span class="na">ansible.cfg</span>
-    <span class="na">inventories/</span>
-        <span class="na">dev/</span>
-            <span class="na">group_vars/                        ## shared variables for groups of hosts</span>
-                <span class="na">aci.yml</span>
-                <span class="na">iosxr.yml</span>
-                <span class="na">ios.yml</span>
-                <span class="na">nxos.yml</span>
-            <span class="na">hosts                              ## inventory file for the development network</span>
-            <span class="na">host_vars/                         ## specific variables for individual hosts</span>
-                <span class="na">ios-xe-mgmt.cisco.com/</span>
-                    <span class="na">ios-xe-mgmt.cisco.com.yml</span>
-                <span class="na">sandboxapicdc.cisco.com/</span>
-                    <span class="na">sandboxapicdc.cisco.com.yml</span>
-                <span class="na">sbx-iosxr-mgmt.cisco.com/</span>
-                    <span class="na">sbx-iosxr-mgmt.cisco.com.yml</span>
-                <span class="na">sbx-nxos-mgmt.cisco.com/</span>
-                    <span class="na">sbx-nxos-mgmt.cisco.com.yml</span>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">chhannan@ubuntu:~/netauto$ tree </span>
+<span class="na">.</span>
+<span class="na">├── ansible.cfg</span>
+<span class="na">└── inventories</span>
+    <span class="na">└── dev</span>
+        <span class="na">├── group_vars</span>
+        <span class="na">│   ├── aci.yml</span>
+        <span class="na">│   ├── iosxr.yml</span>
+        <span class="na">│   ├── ios.yml</span>
+        <span class="na">│   └── nxos.yml</span>
+        <span class="na">├── hosts</span>
+        <span class="na">└── host_vars</span>
+            <span class="na">├── ios-xe-mgmt.cisco.com</span>
+            <span class="na">│   └── ios-xe-mgmt.cisco.com.yml</span>
+            <span class="na">├── sandboxapicdc.cisco.com</span>
+            <span class="na">│   └── sandboxapicdc.cisco.com.yml</span>
+            <span class="na">├── sbx-iosxr-mgmt.cisco.com</span>
+            <span class="na">│   └── sbx-iosxr-mgmt.cisco.com.yml</span>
+            <span class="na">└── sbx-nxos-mgmt.cisco.com</span>
+                <span class="na">└── sbx-nxos-mgmt.cisco.com.yml</span>
+
+<span class="na">8 directories, 10 files</span>
 </code></pre></div><h2 id="next-steps">Next Steps</h2>
 <p>We now have a solid Ansible directory structure, with the Cisco DevNet sandboxes for multiple OS types defined in a dedicated development inventory.</p>
-<p><a href="https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-playbooks-and-git/">Part 2</a> of this guide will cover creating a simple playbook to retrieve information from the Cisco DevNet sandboxes.</p>
+<p><a href="https://cphannan.github.io/posts/2020/06/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/">Part 2</a> of this guide will cover creating a simple playbook to retrieve information from the Cisco DevNet sandboxes.</p>
 
             </div>
         </article>
@@ -341,7 +344,7 @@ cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/sandboxapicdc.cisco.co
 
         <div class="post-info">
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>845 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>853 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-18</p>
         </div>
@@ -356,7 +359,7 @@ cphannan@ubuntu:~/netauto$ nano inventories/dev/host_vars/sandboxapicdc.cisco.co
                 <div class="pagination__buttons">
                     
                         <span class="button previous">
-                            <a href="https://cphannan.github.io/posts/2020/05/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/">
+                            <a href="https://cphannan.github.io/posts/2020/06/ansible-and-cisco-devnet-part-2.-writing-a-simple-playbook/">
                                 <span class="button__icon">←</span>
                                 <span class="button__text">Ansible and Cisco DevNet: Part 2. Writing a simple playbook</span>
                             </a>
