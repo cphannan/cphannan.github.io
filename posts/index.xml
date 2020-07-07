@@ -163,7 +163,7 @@ fatal: <span class="o">[</span>ios-xe-mgmt.cisco.com<span class="o">]</span>: FA
             /netauto/templates/ios_report.j2
             /netauto/ios_report.j2 on the Ansible Controller.
     If you are using a module and expect the file to exist on the remote, see the remote_src option
-	to retry, use: --limit @/netauto/play_gather-facts.retry
+  to retry, use: --limit @/netauto/play_gather-facts.retry
 
 PLAY RECAP ********************************************************************************************************************************************************************************************************
 ios-xe-mgmt.cisco.com      : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">1</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">1</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>
@@ -266,13 +266,27 @@ ios-xe-mgmt.cisco.com      : <span class="nv">ok</span><span class="o">=</span><
 <p>Version: 16.09.03</p>
 <p>Image: bootflash:packages.conf</p>
 <h2 id="takeaways">Takeaways</h2>
-<p>This guide and the playbook we created should hopefully highlight the power of Ansible and Jinja2 templates for quickly generating inventory reports.</p>
-<p>The Jinja2 template we created and the file extension we used in Tasks 3 and 4 resulted in our reports being generated in Markdown. This could easily be changed to output our reports to .csv by changing the file extensions in tasks 3 and 4 to .csv and amending the Jinja2 template to look like this:</p>
+<ul>
+<li>
+<p><strong>Benefits of network automation:</strong> this post should hopefully highlight the power of Ansible and Jinja2 templates for quickly generating inventory reports. Although we only targeted a single device, this could be scaled up to 100s or 1000s of devices.</p>
+</li>
+<li>
+<p><strong>Flexibility  of network automation:</strong> the Jinja2 template we created and the file extension we used in Tasks 3 and 4 of the playbook resulted in our reports being generated in Markdown. This could easily be changed to output our reports to .csv by changing the file extensions in tasks 3 and 4 to .csv and amending the Jinja2 template to look like this:</p>
+</li>
+</ul>
 <p><strong>ios_report.j2</strong></p>
 <pre><code class="language-jinja2" data-lang="jinja2">Hostname,Model,Serial Number,Software Type,Version,Image
 {{ inventory_hostname }},{{ ansible_net_model }},{{ ansible_net_serialnum }},{{ ansible_net_iostype }},{{ ansible_net_version }},{{ ansible_net_image }}
-</code></pre><p>Future improvements to this playbook could include creating a dedicated &ldquo;reports&rdquo; role and utilising other Ansible OS modules such as <a href="https://docs.ansible.com/ansible/latest/modules/iosxr_facts_module.html" title="iosxr_facts">iosxr_facts</a> and <a href="https://docs.ansible.com/ansible/latest/modules/nxos_facts_module.html" title="nxos_facts">nxos_facts</a> to generate reports for other network devices types.</p>
-<p>Sourcecode for this guide can be found here: <a href="https://github.com/cphannan/netauto">https://github.com/cphannan/netauto</a></p>
+</code></pre><ul>
+<li><strong>Future improvements:</strong>
+<ul>
+<li>this playbook could be expanded to include other network OSs such as IOS-XR and NXOS.</li>
+<li>this playbook could be turned in to a dedicated &ldquo;reports&rdquo; role that generates reports for your multi-vendor, multi-OS network estate.</li>
+<li>as of Ansible 2.9, we could enable facts gathering within the play definition (top section) of the playbook <code>gather_facts: yes</code> and remove the need to include it as task 1. Ansible will then gather facts from the devices targeted in the <code>hosts</code> key.</li>
+</ul>
+</li>
+</ul>
+<p>The code from this post is available on <a href="https://github.com/cphannan/netauto" title="Github">Github</a>:</p>
 ]]></content>
         </item>
         
