@@ -39,9 +39,6 @@ We will now write a playbook that utilises the Ansible ios_facts module, used to
 <p>In the root of the <code>netauto/</code> directory, create a new file named <code>play_gather-facts.yml</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ touch play_gather-facts.yml
 </code></pre></div><p>YAML accepts single-line comments and I have included comments in this playbook to break down what each line is doing. These comments will be omitted when Ansible executes the playbook.</p>
-<blockquote>
-<p><strong>Note:</strong> Task 2 (debug:) in this playbook is a temporary task that will be used to discover what information can be retrieved from IOS devices using the <em>ios_facts</em> module.</p>
-</blockquote>
 <p>Use nano or a text-editor of your choice to paste in the below information:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">                                                  </span><span class="c">## signals the start of a YAML file</span><span class="w">
 </span><span class="w">
@@ -173,7 +170,7 @@ ios-xe-mgmt.cisco.com      : <span class="nv">ok</span><span class="o">=</span><
 
 chhannan@ubuntu:~/netauto$ 
 </code></pre></div><h3 id="step-4-create-the-jinja2-template-referenced-in-task-3">Step 4: Create the Jinja2 template referenced in Task 3</h3>
-<p>We will now use the key-value pairs retrieved in Step 2 of this guide to create a template of how we want our report file to look and what information it should hold about each device targeted in the playbook run. The template will use the key from facts gathered by the <em>ios_facts</em> module as a variable to dynamically create a device report.</p>
+<p>We will now use the key-value pairs retrieved in Step 2 of this guide to create a template of how we want our report file to look and what information it should hold about each device targeted in the playbook run. The template will use the keys from facts gathered by the <em>ios_facts</em> module as variables to dynamically render a device report.</p>
 <p>In the root of the <code>netauto/</code> directory, create a new file named <code>ios_report.j2</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cphannan@ubuntu:~/netauto$ touch ios_report.j2
 </code></pre></div><p>Use nano or a text-editor of your choice to paste in the below template:</p>
@@ -221,10 +218,15 @@ ios-xe-mgmt.cisco.com      : <span class="nv">ok</span><span class="o">=</span><
 <li>updated our target inventory to include new hosts</li>
 </ul>
 </li>
-<li><strong>Task 4:</strong> changed - creates a new &ldquo;master&rdquo; report that concatenates all of the device reports into a single report file.</li>
+<li><strong>Task 4:</strong> changed - creates a new &ldquo;master&rdquo; report that concatenates all of the device reports into a single report file. Subsequent runs of this playbook would register no changes for this task until we either:
+<ul>
+<li>modified the template</li>
+<li>updated our target inventory to include new hosts</li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong> In this example we only target a single IOS device so the individual report and the &ldquo;master&rdquo; report will be identical. If we were to add more devices to the <code>[ios]</code> group in our <code>/dev</code> inventory, the report generated in Task 4 would contain every device&rsquo;s individual report.</p>
+<p><strong>Note:</strong> In this example we only target a single IOS device so the individual report and the &ldquo;master&rdquo; report will be identical. If we were to add more devices to the <code>[ios]</code> group in our <code>/dev</code> inventory, the report generated in Task 4 (<em>ios_network_report.md</em>) would contain every device&rsquo;s individual report.</p>
 </blockquote>
 <h3 id="step-6-view-the-rendered-reports">Step 6: View the rendered reports</h3>
 <p>From the root of the <code>netauto/</code> directory we should now see a <code>reports/</code> directory that contains the two report files:</p>
