@@ -8,7 +8,7 @@ title: Christopher Hannan
 
 I am a network automation engineer, specialising in Cisco networking technologies and with a first-class honours networking degree. I currently work full-time in Leeds for one of the world's biggest bookmakers. Using the Agile methodology, I am part of a small team that collaborates on network automation projects.
 
-I created this space as a place to document my personal development. Moving from a traditional network engineer using the CLI to manually configure one device at a time, to a "NetDevOps" engineer utilising tools such as Ansible, Git and Python programming.
+I created this space as a place to document my personal development. Moving from a traditional network engineer using the CLI to manually configure one device at a time, to a network automation engineer utilising tools such as Ansible, Git and Python programming.
 
 ## Work Experience
 
