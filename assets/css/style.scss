@@ -1,4 +1,15 @@
 ---
 ---
 
-@import "jekyll-theme-minimal";
+@import "{{ site.theme }}";
+
+header {
+    text-align: right;
+}
+
+img#personal-photo {
+    width: 100px;
+    max-width: 50%;
+    margin-right: 6px;
+    float: left;
+}

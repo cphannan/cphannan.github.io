@@ -1,6 +1,13 @@
-title: Minimal theme
-logo: /assets/img/logo.png
-description: Minimal is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
 theme: jekyll-theme-minimal
+
+title: Christopher Hannan
+description: Network & Security engineer, automation enthusiast!
+
+urls:
+    linkedin: https://www.linkedin.com/in/1chrishannan/
+    github: https://github.com/cphannan
+
+contacts:
+    email: channan@hotmail.co.uk
+
+motto: What the caterpillar calls the end, the rest of the world calls a butterfly. - Lao Tze
