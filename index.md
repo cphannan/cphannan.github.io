@@ -1,123 +1,108 @@
 ---
-layout: default
+title: Christopher Hannan
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+## About Me
 
-[Link to another page](./another-page.html).
+<img src="avatar.png" alt="Christopher Hannan" width="100" id="personal-photo">
 
-There should be whitespace between paragraphs.
+I am a network automation engineer, specialising in Cisco networking technologies and with a first-class honours networking degree. I currently work full-time in Leeds for one of the world's biggest bookmakers. Using the Agile methodology, I am part of a small team that collaborates on network automation projects.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+I created this space as a place to document my personal development. Moving from a traditional network engineer using the CLI to manually configure one device at a time, to a "NetDevOps" engineer utilising tools such as Ansible, Git and Python programming.
 
-# Header 1
+## Work Experience
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+<table>
+  <tbody>
+    <tr>
+      <td style="text-align: left;">May 2023 <br/>
+      - Present</td>
+      <td style="text-align: left;">
+        <b>Network Automation Engineer</b> <br/>
+        Sky Betting & Gaming
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Nov 2021 <br/>
+      - May 2023</td>
+      <td style="text-align: left;">
+        <b>Network Engineer</b> <br/>
+        Sky Betting & Gaming
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">May 2019 <br/>
+      - Nov 2021</td>
+      <td style="text-align: left;">
+        <b>Network & Security Engineer</b> <br/>
+        William Hill
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Apr 2016 <br/>
+      - May 2019</td>
+      <td style="text-align: left;">
+        <b>Network Engineer</b> <br/>
+        SICL Ltd (now Koris365)
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-## Header 2
+## Certifications
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+<table>
+  <tbody>
+    <tr>
+      <td style="text-align: left;">Issued Jun 2023 <br/>
+      Expires Jun 2026</td>
+      <td style="text-align: left;">
+        <b>AWS Certified Cloud Practitioner</b> <br/>
+        Amazon Web Services (AWS) <br/>
+        <em><a href="https://www.credly.com/badges/c0122d1d-29b9-4bf7-9b39-c182602b5c8f/public_url">View Credential</a></em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Issued Jul 2022 <br/>
+      Expires Jul 2025</td>
+      <td style="text-align: left;">
+        <b>Cisco Certified DevNet Associate</b> <br/>
+        Cisco <br/>
+        <em><a href="https://www.credly.com/badges/1ceb557a-28f1-4a30-be46-128e1e47d1e7/public_url">View Credential</a></em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Issued May 2016 <br/>
+      Expires Jul 2025</td>
+      <td style="text-align: left;">
+        <b>Cisco Certified Network Associate</b> <br/>
+        Cisco <br/>
+        <em><a href="https://www.credly.com/badges/2325f7d7-69e5-4686-af95-230c5fc73d74/public_url">View Credential</a></em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Issued Mar 2018 <br/>
+      Expires Jul 2025</td>
+      <td style="text-align: left;">
+        <b>Cisco Certified CyberOps Associate</b> <br/>
+        Cisco <br/>
+        <em><a href="https://www.credly.com/badges/e6ede742-1630-4bd2-8e93-1a3e2d6ed354/public_url">View Credential</a></em>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-### Header 3
+## Education
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+<table>
+  <tbody>
+    <tr>
+      <td style="text-align: left;">2013 - 2016</td>
+      <td style="text-align: left;">
+        <b>Bachelor of Science - BSc (First Class Honours)</b> <br/>
+        Computer Networks and Systems Support <br/>
+        Teesside University
+      </td>
+    </tr>
+  </tbody>
+</table>
