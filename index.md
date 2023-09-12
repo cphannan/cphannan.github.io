@@ -15,32 +15,32 @@ I created this space as a place to document my personal development. Moving from
 <table>
   <tbody>
     <tr>
-      <td style="text-align: left;">May 2023 <br/>
-      - Present</td>
+      <td style="text-align: left;">05/2023 <br/>
+      Present</td>
       <td style="text-align: left;">
         <b>Network Automation Engineer</b> <br/>
         Sky Betting & Gaming
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">Nov 2021 <br/>
-      - May 2023</td>
+      <td style="text-align: left;">11/2021 <br/>
+      05/2023</td>
       <td style="text-align: left;">
         <b>Network Engineer</b> <br/>
         Sky Betting & Gaming
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">May 2019 <br/>
-      - Nov 2021</td>
+      <td style="text-align: left;">05/2019 <br/>
+      11/2021</td>
       <td style="text-align: left;">
         <b>Network & Security Engineer</b> <br/>
         William Hill
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">Apr 2016 <br/>
-      - May 2019</td>
+      <td style="text-align: left;">04/2016 <br/>
+      05/2019</td>
       <td style="text-align: left;">
         <b>Network Engineer</b> <br/>
         SICL Ltd (now Koris365)
@@ -49,13 +49,42 @@ I created this space as a place to document my personal development. Moving from
   </tbody>
 </table>
 
+<details>
+  <summary>Other Experience</summary>
+  
+  <br />
+
+<table>
+  <tbody>
+    <tr>
+      <td style="text-align: left;">06/2015<br/>08/2015</td>
+      <td style="text-align: left;">
+        <b>Junior Network Security Analyst</b> <br/>
+        William Hill <br/>
+        <em>Over the course of this summer I worked alongside and shadowed the network operations team at William Hill. I gained knowledge of the day to day responsibilities that a network security engineer has, the tools they use for network monitoring and was exposed to firewall technologies such as Cisco ASA and Check Point.</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">03/2015<br/>05/2015</td>
+      <td style="text-align: left;">
+        <b>Further Education Networking Labs</b> <br/>
+        Bradford College <br/>
+        <em>Volunteered to install and configure the Cisco lab equipment in the new David Hockney Building at Bradford College.</em>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</details>
+
+<br />
+
 ## Certifications
 
 <table>
   <tbody>
     <tr>
-      <td style="text-align: left;">Issued Jun 2023 <br/>
-      Expires Jun 2026</td>
+      <td style="text-align: left;">Issued 06/2023 <br/>
+      Expires 06/2026</td>
       <td style="text-align: left;">
         <b>AWS Certified Cloud Practitioner</b> <br/>
         Amazon Web Services (AWS) <br/>
@@ -63,8 +92,8 @@ I created this space as a place to document my personal development. Moving from
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">Issued Jul 2022 <br/>
-      Expires Jul 2025</td>
+      <td style="text-align: left;">Issued 07/2022 <br/>
+      Expires 07/2025</td>
       <td style="text-align: left;">
         <b>Cisco Certified DevNet Associate</b> <br/>
         Cisco <br/>
@@ -72,21 +101,21 @@ I created this space as a place to document my personal development. Moving from
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">Issued May 2016 <br/>
-      Expires Jul 2025</td>
-      <td style="text-align: left;">
-        <b>Cisco Certified Network Associate</b> <br/>
-        Cisco <br/>
-        <em><a href="https://www.credly.com/badges/2325f7d7-69e5-4686-af95-230c5fc73d74/public_url">View Credential</a></em>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align: left;">Issued Mar 2018 <br/>
-      Expires Jul 2025</td>
+      <td style="text-align: left;">Issued 03/2018 <br/>
+      Expires 07/2025</td>
       <td style="text-align: left;">
         <b>Cisco Certified CyberOps Associate</b> <br/>
         Cisco <br/>
         <em><a href="https://www.credly.com/badges/e6ede742-1630-4bd2-8e93-1a3e2d6ed354/public_url">View Credential</a></em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Issued 05/2016 <br/>
+      Expires 07/2025</td>
+      <td style="text-align: left;">
+        <b>Cisco Certified Network Associate</b> <br/>
+        Cisco <br/>
+        <em><a href="https://www.credly.com/badges/2325f7d7-69e5-4686-af95-230c5fc73d74/public_url">View Credential</a></em>
       </td>
     </tr>
   </tbody>
