@@ -10,10 +10,6 @@ I am a network automation engineer, specialising in Cisco networking technologie
 
 I created this space as a place to document my personal development. Moving from a traditional network engineer using the CLI to manually configure one device at a time, to a network automation engineer utilising tools such as Ansible, Git and Python programming.
 
-## [Posts](./posts.html)
-
-## [Categories](./categories.html)
-
 ## Work Experience
 
 <table>
