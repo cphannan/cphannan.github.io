@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Ansible and Cisco DevNet: Part 1. Getting Started"
+title: "Ansible and Cisco DevNet: Part 1 - Getting started"
 date: 2020-04-18
 author: "Christopher Hannan"
+tags: Ansible Cisco DevNet
 ---
 
 ## Table of Contents
@@ -320,4 +321,4 @@ cphannan@ubuntu:~/netauto$ tree
 
 We now have a solid Ansible directory structure, with the Cisco DevNet sandboxes for multiple OS types defined in a dedicated development inventory.
 
-[Part 2](/2020/06/06/ansible-devnet-part2/) of this guide will cover creating a simple playbook to retrieve information from the Cisco DevNet sandboxes.
+[Part 2]({% post_url 2020-06-06-ansible-devnet-part2 %}) of this guide shows you how to create a simple playbook to retrieve information from the Cisco DevNet sandbox devices.

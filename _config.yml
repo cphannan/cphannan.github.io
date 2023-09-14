@@ -10,4 +10,6 @@ urls:
 contacts:
     email: channan@hotmail.co.uk
 
+display_tags: ['Ansible', 'Cisco', 'DevNet']
+
 motto: Nothing great in the world has ever been accomplished without passion. - Georg Wilhelm Friedrich Hegel

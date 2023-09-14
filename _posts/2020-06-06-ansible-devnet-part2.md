@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Ansible and Cisco DevNet: Part 2. Writing a simple playbook"
+title: "Ansible and Cisco DevNet: Part 2 - Writing a simple playbook"
 date: 2020-06-06
 author: "Christopher Hannan"
+tags: Ansible Cisco DevNet
 ---
 
 ## Table of Contents
@@ -23,7 +24,7 @@ We will now write a playbook that utilises the Ansible [ios_facts](https://docs.
 
 ## Prerequisites
 
-> **Note:** This guide assumes that you have already worked through the Getting Started steps covered in [Part 1](/2020/04/18/ansible-devnet-part1/).
+> **Note:** This guide assumes that you have already worked through the Getting Started steps covered in [Part 1]({% post_url 2020-04-18-ansible-devnet-part1 %}).
 
 ## Guide
 
