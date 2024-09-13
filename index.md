@@ -1,4 +1,4 @@
----
+4---
 title: Christopher Hannan
 ---
 
@@ -15,32 +15,40 @@ I created this space as a place to document my personal development. Moving from
 <table>
   <tbody>
     <tr>
-      <td style="text-align: left;">05/2023 <br/>
-      Present</td>
+      <td style="text-align: left;">Present <br/>
+      08/2024</td>
+      <td style="text-align: left;">
+        <b>Senior Network Automation Engineer</b> <br/>
+        Sky Betting & Gaming
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">08/2024 <br/>
+      05/2023</td>
       <td style="text-align: left;">
         <b>Network Automation Engineer</b> <br/>
         Sky Betting & Gaming
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">11/2021 <br/>
-      05/2023</td>
+      <td style="text-align: left;">05/2023 <br/>
+      11/2021</td>
       <td style="text-align: left;">
         <b>Network Engineer</b> <br/>
         Sky Betting & Gaming
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">05/2019 <br/>
-      11/2021</td>
+      <td style="text-align: left;">11/2021 <br/>
+      05/2019</td>
       <td style="text-align: left;">
         <b>Network & Security Engineer</b> <br/>
         William Hill
       </td>
     </tr>
     <tr>
-      <td style="text-align: left;">04/2016 <br/>
-      05/2019</td>
+      <td style="text-align: left;">05/2019 <br/>
+      04/2016</td>
       <td style="text-align: left;">
         <b>Network Engineer</b> <br/>
         SICL Ltd (now Koris365)
